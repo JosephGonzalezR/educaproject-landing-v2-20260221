@@ -1400,14 +1400,15 @@ html[data-theme="dark"] {
   --shadow-lg: 0 36px 100px rgba(0,0,0,.48);
 
   --grad:
-    radial-gradient(1000px 620px at 8% 4%,  rgba(43,82,153,.48), transparent 60%),
-    radial-gradient(780px 500px at 88% 8%,  rgba(201,168,76,.32), transparent 56%),
-    radial-gradient(900px 620px at 50% 115%, rgba(26,58,107,.40), transparent 62%);
+    radial-gradient(ellipse 140% 90% at 50% 28%, rgba(43,82,153,.56), transparent 68%),
+    radial-gradient(ellipse 85% 65% at 88% 10%, rgba(201,168,76,.32), transparent 58%),
+    radial-gradient(ellipse 90% 70% at 8%  85%, rgba(26,58,107,.44), transparent 62%);
 
   --bg-grad:
-    radial-gradient(1100px 680px at var(--mx) var(--my), rgba(43,82,153,.55), transparent 62%),
-    radial-gradient(750px 500px at 90% 6%,  rgba(201,168,76,.30), transparent 56%),
-    radial-gradient(700px 520px at 8% 88%,  rgba(26,58,107,.45), transparent 62%);
+    radial-gradient(ellipse 145% 92% at 50% 32%, rgba(43,82,153,.58), transparent 70%),
+    radial-gradient(ellipse 90% 68% at 88% 8%,  rgba(201,168,76,.34), transparent 58%),
+    radial-gradient(ellipse 95% 72% at 8%  82%, rgba(26,58,107,.48), transparent 64%),
+    radial-gradient(ellipse 80% 55% at 48% 98%, rgba(43,82,153,.32), transparent 55%);
 }
 
 
@@ -1722,10 +1723,6 @@ html[data-theme="dark"] .hero__bg {
   filter: saturate(1.5) brightness(1.2);
 }
 
-/* Aurora del body más saturada (sigue al cursor) */
-html[data-theme="dark"] body {
-  background-attachment: fixed;
-}
 
 /* Eliminar estilos del toggle de tema ya que no existe */
 .theme-toggle { display: none !important; }

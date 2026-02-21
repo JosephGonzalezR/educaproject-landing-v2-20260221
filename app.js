@@ -283,38 +283,6 @@ function setupScrollSpy() {
 
 
 
-function setupPointerGlow() {
-  // Brillo ambiental (estilo “aurora”) que sigue el cursor en desktop.
-  // Progresivo: solo en puntero fino y sin reduce-motion.
-  const root = document.documentElement;
-  const finePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!finePointer || reduceMotion) return;
-
-  let x = window.innerWidth * 0.5;
-  let y = window.innerHeight * 0.18;
-  let raf = null;
-
-  const apply = () => {
-    raf = null;
-    root.style.setProperty("--mx", `${Math.round(x)}px`);
-    root.style.setProperty("--my", `${Math.round(y)}px`);
-  };
-
-  window.addEventListener(
-    "pointermove",
-    (e) => {
-      x = e.clientX;
-      y = e.clientY;
-      if (raf) return;
-      raf = requestAnimationFrame(apply);
-    },
-    { passive: true }
-  );
-
-  // Inicializa
-  apply();
-}
 
 
 function setupGSAP() {
@@ -493,7 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   setupScrollProgress();
   setupScrollSpy();
-  setupPointerGlow();
   setupNavScroll();
   setupGSAP();
   setupAccordions();
