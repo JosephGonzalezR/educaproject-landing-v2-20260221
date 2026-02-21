@@ -97,6 +97,17 @@
       <path d="M5 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+    </symbol>
   </svg>
 
   <div class="topbar">
@@ -106,7 +117,17 @@
         <span class="topbar__text">Atención por WhatsApp • <span data-bind="location">Lince, Perú</span></span>
       </div>
       <div class="topbar__right">
-        <a class="topbar__link" data-href="facebookUrl" href="#" rel="noopener">Facebook</a>
+        <div class="social-links">
+          <a class="social-link" data-href="facebookUrl" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg>
+          </a>
+          <a class="social-link" data-href="tiktokUrl" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg>
+          </a>
+          <a class="social-link" data-href="instagramUrl" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg>
+          </a>
+        </div>
         <button class="theme-toggle" type="button" id="themeToggle" aria-label="Cambiar tema">
           <span class="theme-toggle__icon" aria-hidden="true"></span>
           <span class="theme-toggle__text">Tema</span>
@@ -935,7 +956,20 @@
                   Escribir ahora
                   <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
                 </a>
-                <a class="btn btn--ghost btn--block" data-href="facebookUrl" href="#" rel="noopener">Ver Facebook</a>
+                <div class="social-btns">
+                  <a class="social-btn social-btn--fb" data-href="facebookUrl" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg>
+                    <span>Facebook</span>
+                  </a>
+                  <a class="social-btn social-btn--tt" data-href="tiktokUrl" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg>
+                    <span>TikTok</span>
+                  </a>
+                  <a class="social-btn social-btn--ig" data-href="instagramUrl" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    <span>Instagram</span>
+                  </a>
+                </div>
               </div>
 
               <div class="map">
@@ -1002,7 +1036,15 @@
         <div>
           <h4>Contacto</h4>
           <a data-wa-message="Hola, quiero información. ¿Me orientan?" href="#" rel="noopener">WhatsApp</a>
-          <a data-href="facebookUrl" href="#" rel="noopener">Facebook</a>
+          <a data-href="facebookUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg> Facebook
+          </a>
+          <a data-href="tiktokUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg> TikTok
+          </a>
+          <a data-href="instagramUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram
+          </a>
           <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Lince, Perú</span></span>
         </div>
       </div>

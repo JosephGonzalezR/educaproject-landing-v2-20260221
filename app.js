@@ -8,6 +8,8 @@ const CONFIG = {
   whatsappDisplay: "+51 965 148 374",
   location: "Lince, Perú",
   facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
+  tiktokUrl: "https://www.tiktok.com/@educaproject_",
+  instagramUrl: "https://www.instagram.com/educaproject_peru/",
 
   // Indicadores (opcional). Si no deseas números, deja en "—".
   stat1Value: "300+",

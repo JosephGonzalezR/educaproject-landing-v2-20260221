@@ -1058,6 +1058,57 @@ html[data-theme="dark"] .nav.nav--scrolled{
 .nav.nav--scrolled .nav__logo img{ width: 34px; height: 34px; }
 
 /* ==============================
+   REDES SOCIALES — Topbar iconos
+   ============================== */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--muted);
+  transition: color .18s ease, background .18s ease;
+  text-decoration: none;
+}
+.social-link:hover { color: var(--brand2); background: rgba(77,126,221,.10); }
+
+/* ==============================
+   REDES SOCIALES — Sidecard botones
+   ============================== */
+.social-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.social-btn {
+  flex: 1;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.social-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.social-btn--fb:hover { border-color: #1877F2; color: #1877F2; }
+.social-btn--tt:hover { border-color: #000; color: #000; }
+.social-btn--ig:hover { border-color: #E1306C; color: #E1306C; }
+html[data-theme="dark"] .social-btn--tt:hover { border-color: #fff; color: #fff; }
+
+/* ==============================
    PANEL FULL WIDTH
    ============================== */
 .panel--full {
