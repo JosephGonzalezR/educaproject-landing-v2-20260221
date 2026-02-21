@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+
+  <script>
+    (() => {
+      try {
+        const stored = localStorage.getItem("ep_theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = (stored === "light" || stored === "dark") ? stored : (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>EducaProject | Asesorías integrales en investigación</title>
+  <meta name="description" content="Asesorías integrales en investigación: metodología, redacción académica, análisis e interpretación de resultados, formato (APA/Vancouver/IEEE) y preparación para sustentación. Atención por WhatsApp." />
+  <meta name="author" content="EducaProject" />
+  <meta name="theme-color" content="#3C5EB3" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EducaProject | Asesorías Integrales" />
+  <meta property="og:description" content="Acompañamiento académico integral para avanzar con claridad: metodología, redacción, análisis y sustentación. Agenda por WhatsApp." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts (si abres el archivo sin internet, el navegador usará la tipografía del sistema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- Iconos SVG (inline para que funcionen incluso abriendo por file://) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M9 12l2 2 4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24">
+      <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M14.8 9.2l-2 6-6 2 2-6 6-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M4 19V5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 15v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 15V7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16 15v-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24">
+      <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M8 13h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 17h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24">
+      <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M19 11a7 7 0 0 1-14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 19v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 22h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 22s7-4.5 7-12a7 7 0 0 0-14 0c0 7.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 11.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="topbar__text">Atención por WhatsApp • <span data-bind="location">Lince, Perú</span></span>
+      </div>
+      <div class="topbar__right">
+        <a class="topbar__link" data-href="facebookUrl" href="#" rel="noopener">Facebook</a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Cambiar tema">
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+          <span class="theme-toggle__text">Tema</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <img src="assets/logo-mark.webp" width="40" height="40" alt="Logo de EducaProject" decoding="async" />
+        <span class="brand__text">
+          <strong data-bind="brand">EducaProject</strong>
+          <small>Asesorías Integrales</small>
+        </span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegación principal" id="navLinks">
+        <a href="#servicios">Servicios</a>
+        <a href="#paraquien">Para ti</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#entregables">Entregables</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#preguntas">FAQ</a>
+        <a href="#contacto" class="nav__cta">Agendar</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm hide-sm" data-wa-message="Hola, quiero agendar una asesoría. ¿Me orientan por favor?" href="#" rel="noopener">
+          WhatsApp <span class="btn__hint" data-bind="whatsappDisplay">+51 965 148 374</span>
+        </a>
+
+        <button class="nav__burger" type="button" id="menuBtn" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="mobile-menu__inner container">
+        <a href="#servicios">Servicios</a>
+        <a href="#paraquien">Para ti</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#entregables">Entregables</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto" class="btn btn--primary btn--block">Agendar por WhatsApp</a>
+        <div class="mobile-menu__meta">
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Lince, Perú</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero" aria-label="Presentación">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="hero__pill" data-reveal>
+            <span class="pill">
+              <svg class="i" aria-hidden="true"><use href="#i-compass"></use></svg>
+              Acompañamiento académico por entregables
+            </span>
+            <span class="pill pill--soft">
+              <svg class="i" aria-hidden="true"><use href="#i-shield"></use></svg>
+              Integridad y confidencialidad
+            </span>
+          </div>
+
+          <h1 class="hero__title" data-reveal>
+            Asesorías integrales para avanzar con claridad, evidencia y orden
+          </h1>
+          <p class="hero__subtitle" data-reveal>
+            Te acompañamos en metodología, redacción académica, análisis e interpretación de resultados, y preparación para sustentación.
+            Trabajamos según el formato que te exija tu institución (p. ej., APA/Vancouver/IEEE).
+          </p>
+
+          <div class="hero__actions" data-reveal>
+            <a class="btn btn--primary" data-wa-message="Hola, quiero agendar una asesoría. ¿Podemos coordinar?" href="#" rel="noopener">
+              Agendar por WhatsApp
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="btn btn--soft" href="#servicios">Ver servicios</a>
+          </div>
+
+          <div class="hero__trust" data-reveal>
+            <div class="trust-badges" aria-label="Compromisos">
+              <div class="badge"><svg class="i i--sm" aria-hidden="true"><use href="#i-check"></use></svg> Entregables claros</div>
+              <div class="badge"><svg class="i i--sm" aria-hidden="true"><use href="#i-check"></use></svg> Sesiones 1:1</div>
+              <div class="badge"><svg class="i i--sm" aria-hidden="true"><use href="#i-check"></use></svg> Revisión por etapas</div>
+              <div class="badge"><svg class="i i--sm" aria-hidden="true"><use href="#i-check"></use></svg> Confidencialidad</div>
+            </div>
+            <p class="fineprint">
+              Nota: brindamos asesoría, revisión y guía. El estudiante conserva la autoría del trabajo.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-reveal>
+          <div class="mockup mockup--pro">
+            <div class="mockup__top">
+              <div class="mockup__dot"></div>
+              <div class="mockup__dot"></div>
+              <div class="mockup__dot"></div>
+              <span class="mockup__label">Panel de avance (ejemplo)</span>
+            </div>
+
+            <div class="mockup__body">
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <div class="mini-card__icon" aria-hidden="true"><svg class="i"><use href="#i-doc"></use></svg></div>
+                  <div class="mini-card__txt">
+                    <strong>Matriz de consistencia</strong>
+                    <span class="muted">Objetivos • Variables • Instrumentos</span>
+                  </div>
+                </div>
+
+                <div class="mini-card">
+                  <div class="mini-card__icon" aria-hidden="true"><svg class="i"><use href="#i-pen"></use></svg></div>
+                  <div class="mini-card__txt">
+                    <strong>Redacción académica</strong>
+                    <span class="muted">Estructura + citas correctas</span>
+                  </div>
+                </div>
+
+                <div class="mini-card">
+                  <div class="mini-card__icon" aria-hidden="true"><svg class="i"><use href="#i-chart"></use></svg></div>
+                  <div class="mini-card__txt">
+                    <strong>Resultados</strong>
+                    <span class="muted">Tablas • Interpretación • Discusión</span>
+                  </div>
+                </div>
+
+                <div class="mini-card">
+                  <div class="mini-card__icon" aria-hidden="true"><svg class="i"><use href="#i-mic"></use></svg></div>
+                  <div class="mini-card__txt">
+                    <strong>Sustentación</strong>
+                    <span class="muted">Guion • Slides • Ensayo</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <div class="progress__row">
+                  <span class="muted">Tu avance</span>
+                  <span class="progress__pct">Ordenado</span>
+                </div>
+                <div class="progress__bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress__fill" style="width:72%"></div>
+                </div>
+                <p class="fineprint" style="margin-top:10px">Indicador referencial. Se define un plan real tras el diagnóstico.</p>
+              </div>
+
+              <div class="mockup__cta">
+                <a class="btn btn--primary btn--block" data-wa-message="Hola, quiero una orientación sobre mi avance y entregables. ¿Cómo empezamos?" href="#" rel="noopener">
+                  Quiero orientación
+                  <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="chips" aria-label="Formatos habituales">
+            <span class="chip">APA 7</span>
+            <span class="chip">Vancouver</span>
+            <span class="chip">IEEE</span>
+            <span class="chip">Normas internas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE / KPI -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="value-grid">
+          <div class="value" data-reveal>
+            <h2>Menos incertidumbre. Más estructura.</h2>
+            <p class="muted">
+              Te ayudamos a tomar decisiones justificadas: delimitar el tema, alinear objetivos, definir método, redactar con coherencia y presentar resultados con criterio.
+            </p>
+
+            <div class="mini-features" aria-label="Puntos clave">
+              <div class="mini-feature"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Plan por entregables</div>
+              <div class="mini-feature"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Revisión de coherencia</div>
+              <div class="mini-feature"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Formato según guía</div>
+              <div class="mini-feature"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg> Preparación para sustentación</div>
+            </div>
+          </div>
+
+          <div class="stats" data-reveal aria-label="Indicadores configurables">
+            <div class="stat">
+              <strong data-bind="stat1Value">—</strong>
+              <span class="muted" data-bind="stat1Label">Sesiones 1:1 (configurable)</span>
+            </div>
+            <div class="stat">
+              <strong data-bind="stat2Value">—</strong>
+              <span class="muted" data-bind="stat2Label">Formatos atendidos (configurable)</span>
+            </div>
+            <div class="stat">
+              <strong data-bind="stat3Value">—</strong>
+              <span class="muted" data-bind="stat3Label">Entregables por etapa (configurable)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Servicios de apoyo académico</h2>
+          <p class="muted" data-reveal>
+            Selecciona lo que necesitas y coordinamos el plan. Si no sabes por dónde empezar, te guiamos con una evaluación inicial.
+          </p>
+        </div>
+
+        <div class="cards cards--3">
+          <article class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-compass"></use></svg></div>
+            <h3>Planteamiento y metodología</h3>
+            <ul class="list">
+              <li>Delimitación del problema</li>
+              <li>Objetivos e hipótesis (si aplica)</li>
+              <li>Diseño metodológico y muestreo</li>
+              <li>Instrumentos y operacionalización</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-pen"></use></svg></div>
+            <h3>Redacción académica</h3>
+            <ul class="list">
+              <li>Estructura por capítulos</li>
+              <li>Coherencia y argumentación</li>
+              <li>Normas de citación (según guía)</li>
+              <li>Revisión de estilo y claridad</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-chart"></use></svg></div>
+            <h3>Análisis e interpretación</h3>
+            <ul class="list">
+              <li>Plan de análisis</li>
+              <li>Tablas/figuras y lectura correcta</li>
+              <li>Discusión de resultados</li>
+              <li>Conclusiones y recomendaciones</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-doc"></use></svg></div>
+            <h3>Formato y entregables</h3>
+            <ul class="list">
+              <li>Plantillas y márgenes</li>
+              <li>Índices, tablas, figuras</li>
+              <li>Citas y referencias</li>
+              <li>Checklist de pre-entrega</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-mic"></use></svg></div>
+            <h3>Sustentación</h3>
+            <ul class="list">
+              <li>Guion y narrativa</li>
+              <li>Diapositivas efectivas</li>
+              <li>Preguntas frecuentes del jurado</li>
+              <li>Ensayo y retroalimentación</li>
+            </ul>
+          </article>
+
+          <article class="card card--highlight" data-reveal>
+            <div class="card__tag">Inicio recomendado</div>
+            <div class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-shield"></use></svg></div>
+            <h3>Diagnóstico de avance</h3>
+            <p class="muted">Revisamos tu estado actual y definimos próximos pasos con un plan de entregables.</p>
+            <a class="btn btn--primary btn--block" data-wa-message="Hola, quisiera un diagnóstico de mi avance. ¿Qué información debo enviar?" href="#" rel="noopener">
+              Solicitar diagnóstico
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR YOU -->
+    <section class="section section--alt" id="paraquien">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>¿Es para ti?</h2>
+          <p class="muted" data-reveal>
+            Esta sección mejora la claridad comercial: qué sí hacemos y qué no.
+          </p>
+        </div>
+
+        <div class="split" data-reveal>
+          <div class="panel">
+            <h3>Te sirve si…</h3>
+            <ul class="list">
+              <li>Estás bloqueado/a con el tema, objetivos o metodología.</li>
+              <li>Necesitas coherencia entre problema, objetivos, método y resultados.</li>
+              <li>Quieres mejorar redacción, estructura y citas según tu guía.</li>
+              <li>Buscas acompañamiento para organizar entregables y plazos.</li>
+            </ul>
+          </div>
+
+          <div class="panel panel--danger">
+            <h3>No es para…</h3>
+            <ul class="list">
+              <li>Solicitudes para “hacer el trabajo completo” en lugar del estudiante.</li>
+              <li>Promesas de aprobación/nota (nadie serio puede garantizar eso).</li>
+              <li>Entregas sin información mínima o sin respetar la guía institucional.</li>
+              <li>Procesos que impliquen suplantación de autoría.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-mini" data-reveal>
+          <div class="cta-mini__copy">
+            <h3>Si tienes dudas, lo resolvemos en 1 mensaje</h3>
+            <p class="muted">Dinos tu etapa y te indicamos el flujo recomendado.</p>
+          </div>
+          <a class="btn btn--soft" data-wa-message="Hola, no sé si mi caso aplica. Estoy en la etapa: _____. ¿Me orientan?" href="#" rel="noopener">
+            Consultar por WhatsApp
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Proceso simple (y medible)</h2>
+          <p class="muted" data-reveal>
+            Menos ansiedad, más claridad. Trabajamos por etapas con entregables definidos y revisiones.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="step" data-reveal>
+            <div class="step__num">1</div>
+            <div class="step__body">
+              <h3>Evaluación inicial</h3>
+              <p class="muted">Nos envías tu avance y guía institucional. Identificamos brechas y prioridades.</p>
+            </div>
+          </div>
+
+          <div class="step" data-reveal>
+            <div class="step__num">2</div>
+            <div class="step__body">
+              <h3>Plan de trabajo</h3>
+              <p class="muted">Definimos objetivos, entregables, calendario y criterios de revisión.</p>
+            </div>
+          </div>
+
+          <div class="step" data-reveal>
+            <div class="step__num">3</div>
+            <div class="step__body">
+              <h3>Sesiones + revisión</h3>
+              <p class="muted">Acompañamiento 1:1, correcciones, mejora de estructura y coherencia.</p>
+            </div>
+          </div>
+
+          <div class="step" data-reveal>
+            <div class="step__num">4</div>
+            <div class="step__body">
+              <h3>Entrega y preparación</h3>
+              <p class="muted">Checklist final + preparación para sustentación (si aplica).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-band" data-reveal>
+          <div class="cta-band__copy">
+            <h3>¿Necesitas ordenar tu avance esta semana?</h3>
+            <p class="muted">Coordina por WhatsApp y te indicamos qué enviar para iniciar.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a class="btn btn--primary" data-wa-message="Hola, quiero coordinar una asesoría. ¿Qué debo enviar para iniciar?" href="#" rel="noopener">
+              Escribir por WhatsApp
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="btn btn--soft" href="#contacto">Formulario</a>
+          </div>
+        </div>
+
+        <div class="modality" data-reveal aria-label="Modalidad">
+          <div class="modality__item">
+            <div class="modality__icon"><svg class="i" aria-hidden="true"><use href="#i-clock"></use></svg></div>
+            <div>
+              <strong>Modalidad</strong>
+              <p class="muted">Principalmente online. Presencial sujeto a disponibilidad.</p>
+            </div>
+          </div>
+          <div class="modality__item">
+            <div class="modality__icon"><svg class="i" aria-hidden="true"><use href="#i-doc"></use></svg></div>
+            <div>
+              <strong>Entregables</strong>
+              <p class="muted">Checklist, matriz, estructura y retroalimentación documentada.</p>
+            </div>
+          </div>
+          <div class="modality__item">
+            <div class="modality__icon"><svg class="i" aria-hidden="true"><use href="#i-shield"></use></svg></div>
+            <div>
+              <strong>Ética académica</strong>
+              <p class="muted">Guía y revisión sin suplantar tu autoría.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERABLES -->
+    <section class="section section--alt" id="entregables">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Entregables típicos por etapa</h2>
+          <p class="muted" data-reveal>
+            Guía general. Ajustamos el detalle a tu carrera y a la guía de tu institución.
+          </p>
+        </div>
+
+        <div class="deliverables">
+          <div class="deliverable" data-reveal>
+            <h3>Inicio</h3>
+            <ul class="list">
+              <li>Tema delimitado + problema formulado</li>
+              <li>Objetivos coherentes (y variables si aplica)</li>
+              <li>Matriz de consistencia base</li>
+              <li>Esquema de capítulos</li>
+            </ul>
+          </div>
+
+          <div class="deliverable" data-reveal>
+            <h3>Desarrollo</h3>
+            <ul class="list">
+              <li>Marco teórico estructurado</li>
+              <li>Método definido (tipo, diseño, muestra)</li>
+              <li>Instrumentos y validación (si aplica)</li>
+              <li>Plan de análisis</li>
+            </ul>
+          </div>
+
+          <div class="deliverable" data-reveal>
+            <h3>Cierre</h3>
+            <ul class="list">
+              <li>Resultados + interpretación</li>
+              <li>Discusión alineada a objetivos</li>
+              <li>Conclusiones, recomendaciones y limitaciones</li>
+              <li>Formato final + checklist</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="samples" data-reveal aria-label="Recursos y plantillas">
+          <div class="samples__head">
+            <h3>Recursos y plantillas</h3>
+            <p class="muted">Material de apoyo para avanzar con estructura (descargables).</p>
+          </div>
+          <div class="samples__grid">
+            <a class="sample" href="assets/checklist-entrega-tesis.pdf" target="_blank" rel="noopener">
+              <div class="sample__icon" aria-hidden="true"><svg class="i"><use href="#i-doc"></use></svg></div>
+              <div class="sample__txt">
+                <strong>Checklist de pre-entrega</strong>
+                <span class="muted">PDF • revisa antes de enviar</span>
+              </div>
+            </a>
+            <a class="sample" href="assets/plantilla-matriz-consistencia.docx" target="_blank" rel="noopener">
+              <div class="sample__icon" aria-hidden="true"><svg class="i"><use href="#i-pen"></use></svg></div>
+              <div class="sample__txt">
+                <strong>Plantilla matriz de consistencia</strong>
+                <span class="muted">DOCX • editable</span>
+              </div>
+            </a>
+            <a class="sample" data-wa-message="Hola, ¿me pueden enviar una plantilla/guía adicional según mi carrera?" href="#" rel="noopener">
+              <div class="sample__icon" aria-hidden="true"><svg class="i"><use href="#i-arrow"></use></svg></div>
+              <div class="sample__txt">
+                <strong>Solicitar recursos</strong>
+                <span class="muted">Según tu institución</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS + PRICING -->
+    <section class="section" id="opiniones">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Opiniones</h2>
+          <p class="muted" data-reveal>
+            Para mantener transparencia, estos son espacios listos para pegar reseñas reales (por ejemplo, capturas autorizadas o texto verificado).
+          </p>
+        </div>
+
+        <div class="testimonials" data-reveal>
+          <div class="testimonial">
+            <div class="stars" aria-label="Calificación: 5 de 5">★★★★★</div>
+            <p>“(Pega aquí una reseña real). Qué parte se trabajó, qué cambió y en cuánto tiempo.”</p>
+            <div class="who">
+              <span class="avatar" aria-hidden="true">A</span>
+              <div>
+                <strong>Estudiante (inicial)</strong>
+                <span class="muted">Carrera / Universidad</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars" aria-label="Calificación: 5 de 5">★★★★★</div>
+            <p>“(Pega aquí una reseña real). Describe el acompañamiento y la claridad del plan de trabajo.”</p>
+            <div class="who">
+              <span class="avatar" aria-hidden="true">M</span>
+              <div>
+                <strong>Estudiante (inicial)</strong>
+                <span class="muted">Carrera / Instituto</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars" aria-label="Calificación: 5 de 5">★★★★★</div>
+            <p>“(Pega aquí una reseña real). Enfócate en entregables concretos: matriz, método, resultados, etc.”</p>
+            <div class="who">
+              <span class="avatar" aria-hidden="true">J</span>
+              <div>
+                <strong>Estudiante (inicial)</strong>
+                <span class="muted">Posgrado / Facultad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing" id="planes">
+          <div class="pricing__head" data-reveal>
+            <h2>Planes (cotización según tu caso)</h2>
+            <p class="muted">La cotización depende del avance, carrera, complejidad y requerimientos.</p>
+          </div>
+
+          <div class="cards cards--3">
+            <article class="card" data-reveal>
+              <h3>Inicio</h3>
+              <p class="muted">Para definir tema, objetivos y metodología base.</p>
+              <ul class="list">
+                <li>Diagnóstico + plan de trabajo</li>
+                <li>Matriz base</li>
+                <li>1–2 sesiones (según alcance)</li>
+              </ul>
+              <a class="btn btn--soft btn--block" data-wa-message="Hola, me interesa el plan Inicio. Mi avance actual es: _____. ¿Me cotizan por favor?" href="#" rel="noopener">
+                Solicitar cotización
+                <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </a>
+            </article>
+
+            <article class="card card--highlight" data-reveal>
+              <div class="card__tag">Más solicitado</div>
+              <h3>Desarrollo</h3>
+              <p class="muted">Para capítulos, redacción, análisis y coherencia global.</p>
+              <ul class="list">
+                <li>Revisión por entregables</li>
+                <li>Sesiones 1:1 + correcciones</li>
+                <li>Formato según guía</li>
+              </ul>
+              <a class="btn btn--primary btn--block" data-wa-message="Hola, me interesa el plan Desarrollo. Mi avance actual es: _____. ¿Me cotizan por favor?" href="#" rel="noopener">
+                Cotizar por WhatsApp
+                <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </a>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3>Cierre</h3>
+              <p class="muted">Para revisión final, checklist y sustentación.</p>
+              <ul class="list">
+                <li>Checklist de pre-entrega</li>
+                <li>Revisión de coherencia</li>
+                <li>Ensayo de sustentación (opcional)</li>
+              </ul>
+              <a class="btn btn--soft btn--block" data-wa-message="Hola, me interesa el plan Cierre. Mi fecha de entrega es: _____. ¿Me orientan?" href="#" rel="noopener">
+                Consultar disponibilidad
+                <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section section--alt" id="equipo">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Equipo de apoyo</h2>
+          <p class="muted" data-reveal>
+            Roles típicos de acompañamiento. Reemplaza estos textos por la información real de tu equipo si deseas publicarlos.
+          </p>
+        </div>
+
+        <div class="team" data-reveal>
+          <article class="team-card">
+            <div class="team-card__top">
+              <span class="team-avatar" aria-hidden="true">M</span>
+              <div>
+                <h3>Metodología</h3>
+                <p class="muted">Diseño, coherencia y criterios de calidad.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li>Objetivos e hipótesis (si aplica)</li>
+              <li>Diseño, muestra y técnica</li>
+              <li>Matriz y operacionalización</li>
+            </ul>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__top">
+              <span class="team-avatar" aria-hidden="true">R</span>
+              <div>
+                <h3>Redacción y estilo</h3>
+                <p class="muted">Claridad, estructura y citación.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li>Coherencia por capítulos</li>
+              <li>Normas de citación</li>
+              <li>Formato según guía</li>
+            </ul>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__top">
+              <span class="team-avatar" aria-hidden="true">A</span>
+              <div>
+                <h3>Análisis</h3>
+                <p class="muted">Resultados, interpretación y discusión.</p>
+              </div>
+            </div>
+            <ul class="list">
+              <li>Plan de análisis</li>
+              <li>Tablas/figuras</li>
+              <li>Discusión y conclusiones</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cta-band" data-reveal>
+          <div class="cta-band__copy">
+            <h3>¿Prefieres que lo revisemos por entregable?</h3>
+            <p class="muted">Envía tu avance y tu guía institucional. Te damos un plan realista.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a class="btn btn--primary" data-wa-message="Hola, quiero que revisen mi avance por entregables. Mi etapa es: _____." href="#" rel="noopener">
+              Enviar por WhatsApp
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="btn btn--soft" href="#contacto">Contacto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="preguntas">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Preguntas frecuentes</h2>
+          <p class="muted" data-reveal>Respuestas claras para coordinar sin fricción.</p>
+        </div>
+
+        <div class="faq" data-reveal>
+          <h3 class="sr-only">FAQ</h3>
+
+          <div class="faq-search" role="search" aria-label="Buscar en preguntas">
+            <label class="sr-only" for="faqSearchInput">Buscar</label>
+            <input id="faqSearchInput" type="search" placeholder="Escribe para filtrar preguntas…" autocomplete="off" />
+            <span class="faq-search__hint muted" id="faqSearchHint">0</span>
+          </div>
+
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion__item" data-faq-item>
+              <h4 class="accordion__h">
+                <button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq1" id="faqBtn1">
+                  ¿Qué debo enviar para empezar?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="accordion__panel" id="faq1" role="region" aria-labelledby="faqBtn1" hidden>
+                <p class="muted">
+                  Idealmente: tu avance (Word/PDF), la guía de tu institución (formato), y una nota con tu objetivo y fecha tentativa. Si no tienes avance, igual podemos iniciar con una sesión de orientación.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item" data-faq-item>
+              <h4 class="accordion__h">
+                <button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq2" id="faqBtn2">
+                  ¿Trabajan por sesión o por paquete?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="accordion__panel" id="faq2" role="region" aria-labelledby="faqBtn2" hidden>
+                <p class="muted">
+                  Depende de tu preferencia. Podemos trabajar por sesiones puntuales o por un plan con entregables definidos. La recomendación se da tras el diagnóstico.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item" data-faq-item>
+              <h4 class="accordion__h">
+                <button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq3" id="faqBtn3">
+                  ¿Cómo manejan la confidencialidad?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="accordion__panel" id="faq3" role="region" aria-labelledby="faqBtn3" hidden>
+                <p class="muted">
+                  Trabajamos con confidencialidad y usamos canales acordados. Si requieres un acuerdo adicional (NDA), indícalo al inicio.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item" data-faq-item>
+              <h4 class="accordion__h">
+                <button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq4" id="faqBtn4">
+                  ¿Ofrecen “hacer la tesis completa”?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="accordion__panel" id="faq4" role="region" aria-labelledby="faqBtn4" hidden>
+                <p class="muted">
+                  No. Brindamos asesoría, guía, revisión y retroalimentación. El estudiante mantiene la autoría. Esto protege tu proceso académico y evita riesgos institucionales.
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion__item" data-faq-item>
+              <h4 class="accordion__h">
+                <button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq5" id="faqBtn5">
+                  ¿La asesoría es online o presencial?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h4>
+              <div class="accordion__panel" id="faq5" role="region" aria-labelledby="faqBtn5" hidden>
+                <p class="muted">
+                  Principalmente online. Si necesitas presencial, depende de la disponibilidad y ubicación. Confírmanos tu caso por WhatsApp.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__cta">
+            <div class="faq__box">
+              <h3>¿Tu pregunta no está aquí?</h3>
+              <p class="muted">Escríbenos y te respondemos con el flujo correcto para tu caso.</p>
+            </div>
+            <a class="btn btn--primary" data-wa-message="Hola, tengo una consulta: _____. ¿Me ayudan por favor?" href="#" rel="noopener">
+              Consultar por WhatsApp
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contacto">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Agenda una asesoría</h2>
+          <p class="muted" data-reveal>
+            Completa el formulario y se abrirá WhatsApp con un mensaje prellenado. También puedes escribir directo.
+          </p>
+        </div>
+
+        <div class="contact">
+          <form class="form" id="leadForm" data-reveal>
+            <div class="form__row">
+              <label>
+                Nombre
+                <input name="name" type="text" autocomplete="name" placeholder="Tu nombre" required />
+              </label>
+              <label>
+                Carrera / programa
+                <input name="program" type="text" placeholder="Ej.: Administración / Psicología" />
+              </label>
+            </div>
+
+            <div class="form__row">
+              <label>
+                Etapa
+                <select name="stage">
+                  <option value="No estoy seguro/a">No estoy seguro/a</option>
+                  <option value="Inicio (tema/objetivos)">Inicio (tema/objetivos)</option>
+                  <option value="Desarrollo (capítulos/metodología)">Desarrollo (capítulos/metodología)</option>
+                  <option value="Resultados y discusión">Resultados y discusión</option>
+                  <option value="Cierre (formato/sustentación)">Cierre (formato/sustentación)</option>
+                </select>
+              </label>
+              <label>
+                Fecha tentativa
+                <input name="date" type="text" placeholder="Ej.: 15/03 o 'en 3 semanas'" />
+              </label>
+            </div>
+
+            <label>
+              Cuéntanos tu situación
+              <textarea name="message" rows="5" placeholder="Ej.: tengo el marco teórico, pero mi metodología no está alineada y necesito ordenar objetivos/variables."></textarea>
+            </label>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">
+                Enviar por WhatsApp
+                <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </button>
+              <button class="btn btn--ghost" type="button" id="copyWhatsAppBtn">Copiar número</button>
+            </div>
+
+            <p class="fineprint">
+              Al enviar, aceptas nuestra <a href="privacy.html">Política de privacidad</a> y <a href="terms.html">Términos</a>.
+            </p>
+          </form>
+
+          <aside class="contact__side" data-reveal>
+            <div class="sidecard">
+              <h3>Contacto directo</h3>
+              <p class="muted">WhatsApp: <strong data-bind="whatsappDisplay">+51 965 148 374</strong></p>
+              <p class="muted">Ubicación: <strong data-bind="location">Lince, Perú</strong></p>
+
+              <div class="sidecard__actions">
+                <a class="btn btn--soft btn--block" data-wa-message="Hola, quiero información sobre asesorías. ¿Me orientan?" href="#" rel="noopener">
+                  Escribir ahora
+                  <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                </a>
+                <a class="btn btn--ghost btn--block" data-href="facebookUrl" href="#" rel="noopener">Ver Facebook</a>
+              </div>
+
+              <div class="map">
+                <iframe
+                  title="Mapa referencial"
+                  src="https://www.google.com/maps?q=Lince%2C%20Lima%2C%20Per%C3%BA&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              <p class="fineprint">
+                El mapa es referencial. Confirma disponibilidad y modalidad por WhatsApp.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" aria-label="Cierre">
+      <div class="container final-cta__inner" data-reveal>
+        <div>
+          <h2>¿Listo/a para ordenar tu investigación?</h2>
+          <p class="muted">Coordina una evaluación inicial por WhatsApp y te decimos el plan recomendado por entregables.</p>
+        </div>
+        <div class="final-cta__actions">
+          <a class="btn btn--primary" data-wa-message="Hola, quiero una evaluación inicial. Mi etapa es: _____." href="#" rel="noopener">
+            Empezar ahora
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo.webp" width="56" height="56" alt="Logo de EducaProject" loading="lazy" decoding="async" />
+        <div>
+          <strong data-bind="brand">EducaProject</strong>
+          <p class="muted">Asesorías Integrales</p>
+        </div>
+      </div>
+
+      <div class="footer__cols">
+        <div>
+          <h4>Secciones</h4>
+          <a href="#servicios">Servicios</a>
+          <a href="#paraquien">Para ti</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#entregables">Entregables</a>
+          <a href="#opiniones">Opiniones</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacidad</a>
+          <a href="terms.html">Términos</a>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <a data-wa-message="Hola, quiero información. ¿Me orientan?" href="#" rel="noopener">WhatsApp</a>
+          <a data-href="facebookUrl" href="#" rel="noopener">Facebook</a>
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Lince, Perú</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span class="muted">© <span id="year"></span> <span data-bind="brand">EducaProject</span>. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Floating buttons -->
+  <button class="to-top" id="toTop" type="button" aria-label="Volver arriba">↑</button>
+
+  <div class="bottom-bar" id="bottomBar" aria-label="Acciones rápidas">
+    <a class="btn btn--primary btn--block" data-wa-message="Hola, quiero agendar una asesoría. ¿Podemos coordinar?" href="#" rel="noopener">WhatsApp</a>
+    <a class="btn btn--soft btn--block" href="#contacto">Formulario</a>
+  </div>
+
+  <!-- FAQ Structured Data (edita si cambias preguntas) -->
+  <script type="application/ld+json" id="faqSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué debo enviar para empezar?",
+        "acceptedAnswer": {"@type":"Answer","text":"Idealmente: tu avance (Word/PDF), la guía de tu institución (formato), y una nota con tu objetivo y fecha tentativa. Si no tienes avance, igual podemos iniciar con una sesión de orientación."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan por sesión o por paquete?",
+        "acceptedAnswer": {"@type":"Answer","text":"Podemos trabajar por sesiones puntuales o por un plan con entregables definidos. La recomendación se da tras el diagnóstico."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo manejan la confidencialidad?",
+        "acceptedAnswer": {"@type":"Answer","text":"Trabajamos con confidencialidad y usamos canales acordados. Si requieres un acuerdo adicional (NDA), indícalo al inicio."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿Ofrecen “hacer la tesis completa”?",
+        "acceptedAnswer": {"@type":"Answer","text":"No. Brindamos asesoría, guía, revisión y retroalimentación. El estudiante mantiene la autoría."}
+      },
+      {
+        "@type": "Question",
+        "name": "¿La asesoría es online o presencial?",
+        "acceptedAnswer": {"@type":"Answer","text":"Principalmente online. Si necesitas presencial, depende de la disponibilidad y ubicación. Confírmanos tu caso por WhatsApp."}
+      }
+    ]
+  }
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>

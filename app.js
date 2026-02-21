@@ -1,0 +1,353 @@
+/**
+ * EducaProject Landing v6 (2026 Futurista)
+ * Edita CONFIG para personalizar: WhatsApp, ubicación, enlaces, etc.
+ */
+const CONFIG = {
+  brand: "EducaProject",
+  whatsappNumber: "51965148374",      // Formato internacional sin + ni espacios
+  whatsappDisplay: "+51 965 148 374",
+  location: "Lince, Perú",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
+
+  // Indicadores (opcional). Si no deseas números, deja en "—".
+  stat1Value: "—",
+  stat1Label: "Sesiones 1:1 (configurable)",
+  stat2Value: "—",
+  stat2Label: "Formatos atendidos (configurable)",
+  stat3Value: "—",
+  stat3Label: "Entregables por etapa (configurable)",
+};
+
+function buildWhatsAppUrl(message) {
+  const base = `https://wa.me/${CONFIG.whatsappNumber}`;
+  const text = encodeURIComponent(message || "");
+  return `${base}?text=${text}`;
+}
+
+function bindConfig() {
+  document.querySelectorAll("[data-bind]").forEach((el) => {
+    const key = el.getAttribute("data-bind");
+    if (CONFIG[key] !== undefined) el.textContent = CONFIG[key];
+  });
+
+  document.querySelectorAll("[data-href]").forEach((el) => {
+    const key = el.getAttribute("data-href");
+    if (CONFIG[key]) el.setAttribute("href", CONFIG[key]);
+  });
+}
+
+function bindWhatsAppLinks() {
+  const waEls = document.querySelectorAll("[data-wa-message]");
+  waEls.forEach((el) => {
+    const msg = el.getAttribute("data-wa-message") || "";
+    el.setAttribute("href", buildWhatsAppUrl(msg));
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  });
+}
+
+function setupMobileMenu() {
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+  if (!btn || !menu) return;
+
+  btn.addEventListener("click", () => {
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!expanded));
+    menu.hidden = expanded;
+  });
+
+  // Cerrar al hacer clic en un link
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      btn.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    });
+  });
+
+  // Cerrar con Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      btn.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    }
+  });
+}
+
+function setupReveal() {
+  const els = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach((el) => el.classList.add("revealed"));
+    return;
+  }
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+          obs.unobserve(e.target);
+        }
+      }
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+  );
+
+  els.forEach((el) => obs.observe(el));
+}
+
+function setupAccordions() {
+  document.querySelectorAll(".accordion__btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const panelId = btn.getAttribute("aria-controls");
+      const panel = panelId ? document.getElementById(panelId) : null;
+      if (!panel) return;
+
+      btn.setAttribute("aria-expanded", String(!expanded));
+      panel.hidden = expanded;
+    });
+  });
+}
+
+function setupFaqSearch() {
+  const input = document.getElementById("faqSearchInput");
+  const hint = document.getElementById("faqSearchHint");
+  const items = Array.from(document.querySelectorAll("[data-faq-item]"));
+  if (!input || !hint || items.length === 0) return;
+
+  const updateHint = (visibleCount) => {
+    const total = items.length;
+    hint.textContent = `${visibleCount}/${total}`;
+  };
+
+  const filter = () => {
+    const q = (input.value || "").toString().trim().toLowerCase();
+    if (!q) {
+      items.forEach((it) => (it.style.display = ""));
+      updateHint(items.length);
+      return;
+    }
+
+    let visible = 0;
+    items.forEach((it) => {
+      const text = it.textContent.toLowerCase();
+      const match = text.includes(q);
+      it.style.display = match ? "" : "none";
+      if (match) visible += 1;
+    });
+
+    updateHint(visible);
+  };
+
+  input.addEventListener("input", filter);
+  updateHint(items.length);
+}
+
+function setupForm() {
+  const form = document.getElementById("leadForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const name = (data.get("name") || "").toString().trim();
+    const program = (data.get("program") || "").toString().trim();
+    const stage = (data.get("stage") || "").toString().trim();
+    const date = (data.get("date") || "").toString().trim();
+    const message = (data.get("message") || "").toString().trim();
+
+    const lines = [
+      `Hola, soy ${name}.`,
+      program ? `Programa/Carrera: ${program}` : null,
+      stage ? `Etapa: ${stage}` : null,
+      date ? `Fecha tentativa: ${date}` : null,
+      message ? `Situación: ${message}` : null,
+      "",
+      "¿Podemos coordinar una asesoría? Gracias.",
+    ].filter(Boolean);
+
+    const url = buildWhatsAppUrl(lines.join("\n"));
+    window.open(url, "_blank", "noopener");
+  });
+}
+
+function setupCopyWhatsApp() {
+  const btn = document.getElementById("copyWhatsAppBtn");
+  if (!btn) return;
+
+  btn.addEventListener("click", async () => {
+    const text = CONFIG.whatsappDisplay || "";
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => (btn.textContent = "Copiar número"), 1400);
+    } catch {
+      alert(`Copia este número: ${text}`);
+    }
+  });
+}
+
+function setupToTop() {
+  const btn = document.getElementById("toTop");
+  if (!btn) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 500) btn.classList.add("show");
+    else btn.classList.remove("show");
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+function setupTheme() {
+  const toggle = document.getElementById("themeToggle");
+  if (!toggle) return;
+
+  const root = document.documentElement;
+  const stored = localStorage.getItem("ep_theme");
+  if (stored === "light" || stored === "dark") {
+    root.setAttribute("data-theme", stored);
+  } else {
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.setAttribute("data-theme", prefersDark ? "dark" : "light");
+  }
+
+  toggle.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") || "light";
+    const next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("ep_theme", next);
+  });
+}
+
+function setupYear() {
+  const y = document.getElementById("year");
+  if (y) y.textContent = String(new Date().getFullYear());
+}
+
+function setupScrollProgress() {
+  const bar = document.getElementById("scrollProgress");
+  if (!bar) return;
+
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop || 0;
+    const height = doc.scrollHeight - doc.clientHeight;
+    const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+}
+
+function setupScrollSpy() {
+  const nav = document.getElementById("navLinks");
+  if (!nav || !("IntersectionObserver" in window)) return;
+
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const targets = links
+    .map((a) => {
+      const id = a.getAttribute("href").slice(1);
+      const el = document.getElementById(id);
+      return el ? { id, el } : null;
+    })
+    .filter(Boolean);
+
+  if (targets.length === 0) return;
+
+  const clear = () => {
+    links.forEach((a) => {
+      a.classList.remove("active");
+      a.removeAttribute("aria-current");
+    });
+  };
+
+  const setActive = (id) => {
+    clear();
+    const a = links.find((x) => x.getAttribute("href") === `#${id}`);
+    if (a) {
+      a.classList.add("active");
+      a.setAttribute("aria-current", "page");
+    }
+  };
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      // Elegir el que esté más visible
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
+
+      if (visible.length > 0) {
+        setActive(visible[0].target.id);
+      }
+    },
+    {
+      root: null,
+      threshold: [0.2, 0.35, 0.5, 0.65],
+      rootMargin: "-20% 0px -55% 0px",
+    }
+  );
+
+  targets.forEach(({ el }) => obs.observe(el));
+}
+
+
+
+function setupPointerGlow() {
+  // Brillo ambiental (estilo “aurora”) que sigue el cursor en desktop.
+  // Progresivo: solo en puntero fino y sin reduce-motion.
+  const root = document.documentElement;
+  const finePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!finePointer || reduceMotion) return;
+
+  let x = window.innerWidth * 0.5;
+  let y = window.innerHeight * 0.18;
+  let raf = null;
+
+  const apply = () => {
+    raf = null;
+    root.style.setProperty("--mx", `${Math.round(x)}px`);
+    root.style.setProperty("--my", `${Math.round(y)}px`);
+  };
+
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      x = e.clientX;
+      y = e.clientY;
+      if (raf) return;
+      raf = requestAnimationFrame(apply);
+    },
+    { passive: true }
+  );
+
+  // Inicializa
+  apply();
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  bindConfig();
+  bindWhatsAppLinks();
+  setupMobileMenu();
+  setupTheme();
+  setupScrollProgress();
+  setupScrollSpy();
+  setupPointerGlow();
+  setupReveal();
+  setupAccordions();
+  setupFaqSearch();
+  setupForm();
+  setupCopyWhatsApp();
+  setupToTop();
+  setupYear();
+});
