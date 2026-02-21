@@ -1058,6 +1058,87 @@ html[data-theme="dark"] .nav.nav--scrolled{
 .nav.nav--scrolled .nav__logo img{ width: 34px; height: 34px; }
 
 /* ==============================
+   PANEL FULL WIDTH
+   ============================== */
+.panel--full {
+  width: 100%;
+}
+.list--cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+}
+@media (max-width: 640px) {
+  .list--cols { grid-template-columns: 1fr; }
+}
+
+/* ==============================
+   SECCIÓN AYUDA RÁPIDA
+   ============================== */
+.section--urgente {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.urgente-band {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 36px 40px;
+  border-radius: var(--radius);
+  background: linear-gradient(120deg, var(--brand) 0%, var(--brand2) 60%, rgba(120,90,255,.9) 100%);
+  box-shadow: 0 28px 80px rgba(77,126,221,.35);
+  color: #fff;
+  flex-wrap: wrap;
+}
+.urgente-band__icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.18);
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+.urgente-band__icon .i {
+  width: 28px;
+  height: 28px;
+}
+.urgente-band__copy {
+  flex: 1;
+  min-width: 220px;
+}
+.urgente-band__copy h2 {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+}
+.urgente-band__copy p {
+  margin: 0;
+  color: rgba(255,255,255,.85);
+  font-size: 15px;
+}
+.urgente-band__cta {
+  flex-shrink: 0;
+  background: #fff !important;
+  color: var(--brand) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15) !important;
+  animation: none !important;
+  font-weight: 700;
+}
+.urgente-band__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.20) !important;
+}
+@media (max-width: 700px) {
+  .urgente-band { padding: 28px 22px; gap: 20px; }
+  .urgente-band__cta { width: 100%; justify-content: center; }
+}
+
+/* ==============================
    STATS — Icono animado
    ============================== */
 .stat__icon {
