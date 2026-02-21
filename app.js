@@ -11,11 +11,11 @@ const CONFIG = {
 
   // Indicadores (opcional). Si no deseas números, deja en "—".
   stat1Value: "300+",
-  stat1Label: "Proyectos acompañados",
+  stat1Label: "Proyectos elaborados",
   stat2Value: "5+",
   stat2Label: "Formatos de citación",
   stat3Value: "4",
-  stat3Label: "Etapas de acompañamiento",
+  stat3Label: "Etapas de desarrollo",
 };
 
 function buildWhatsAppUrl(message) {
@@ -165,7 +165,7 @@ function setupForm() {
       date ? `Fecha tentativa: ${date}` : null,
       message ? `Situación: ${message}` : null,
       "",
-      "¿Podemos coordinar una asesoría? Gracias.",
+      "¿Podemos coordinar el desarrollo de mi investigación? Gracias.",
     ].filter(Boolean);
 
     const url = buildWhatsAppUrl(lines.join("\n"));
