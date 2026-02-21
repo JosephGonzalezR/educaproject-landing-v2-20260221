@@ -1662,3 +1662,45 @@ html[data-theme="dark"] .footer-wave path { fill: #060C18; }
 .final-cta__inner .btn--primary:hover { background: var(--gold-d) !important; }
 .final-cta__inner .btn--ghost { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.80); }
 .final-cta__inner .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Hero fondo oscuro navy + texto blanco ───────────────── */
+.hero {
+  background: linear-gradient(155deg, #0D1F40 0%, #163266 55%, #0F2040 100%);
+}
+html[data-theme="dark"] .hero {
+  background: linear-gradient(155deg, #070E1E 0%, #0F2040 55%, #070E1E 100%);
+}
+.hero__title {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,.93) 45%, var(--gold) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+html[data-theme="dark"] .hero__title {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,.93) 45%, var(--gold) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+.hero__subtitle { color: rgba(255,255,255,.76) !important; }
+.hero__typed    { color: rgba(255,255,255,.68) !important; }
+#typedTarget, .hero__typed .typed-cursor { color: var(--gold) !important; }
+.hero .pill {
+  background: rgba(255,255,255,.10);
+  border-color: rgba(201,168,76,.32);
+  color: rgba(255,255,255,.88);
+}
+.hero .pill--soft {
+  background: rgba(201,168,76,.14);
+  border-color: rgba(201,168,76,.28);
+  color: var(--gold);
+}
+.hero .badge {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.16);
+  color: rgba(255,255,255,.80);
+}
+.hero .chip {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.76);
+}
