@@ -1766,26 +1766,41 @@ h1, h2, h3,
 .mq-inner--inst {
   animation: mqScrollInst 35s linear infinite;
 }
-/* 19 chips × 180px + 19 gaps × 16px ≈ 3724px por set */
+/* 18 chips × 156px + 18 gaps × 16px ≈ 3096px por set */
 @keyframes mqScrollInst {
   from { transform: translateX(0); }
-  to   { transform: translateX(-3724px); }
+  to   { transform: translateX(-3096px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .mq-inner--inst { animation: none; }
 }
 .inst-chip {
   flex-shrink: 0;
-  padding: 14px 24px;
-  border-radius: 999px;
+  padding: 12px 20px;
+  border-radius: 16px;
   background: var(--card);
   border: 1px solid var(--line);
-  border-top: 2px solid var(--gold);
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--text);
   box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  min-width: 120px;
+}
+.inst-chip img {
+  height: 38px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+}
+.inst-chip--more {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold-d);
   white-space: nowrap;
+  border-color: rgba(247,201,72,.30);
+  background: rgba(247,201,72,.08);
 }
 
 /* ══════════════════════════════════════════════════════════════
