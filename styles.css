@@ -1761,41 +1761,31 @@ h1, h2, h3,
 }
 
 /* ══════════════════════════════════════════════════════════════
-   INSTITUCIONES GRID
+   INSTITUCIONES — Marquee de chips
    ══════════════════════════════════════════════════════════════ */
-.inst-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+.mq-inner--inst {
+  animation: mqScrollInst 35s linear infinite;
 }
-@media (max-width: 980px) { .inst-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .inst-grid { grid-template-columns: 1fr; } }
-
-.inst-card {
-  padding: 20px 18px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
+/* 19 chips × 180px + 19 gaps × 16px ≈ 3724px por set */
+@keyframes mqScrollInst {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-3724px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mq-inner--inst { animation: none; }
+}
+.inst-chip {
+  flex-shrink: 0;
+  padding: 14px 24px;
+  border-radius: 999px;
   background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
   box-shadow: var(--shadow-sm);
-  text-align: center;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.inst-card strong {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-.inst-card span {
-  font-size: 13px;
-}
-.inst-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-.inst-card--highlight {
-  border-color: var(--gold);
-  border-top: 3px solid var(--gold);
-  background: linear-gradient(160deg, rgba(247,201,72,.08), rgba(247,201,72,.02));
+  white-space: nowrap;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1824,10 +1814,3 @@ h1, h2, h3,
 }
 @media (max-width: 980px) { .timeline--3 { grid-template-columns: 1fr; } }
 
-/* Backdrop-filter para inst-card */
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .inst-card {
-    -webkit-backdrop-filter: blur(18px) saturate(1.15);
-    backdrop-filter: blur(18px) saturate(1.15);
-  }
-}
