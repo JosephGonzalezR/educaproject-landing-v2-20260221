@@ -389,28 +389,6 @@ function setupTyped() {
   });
 }
 
-function setupSwiper() {
-  if (typeof Swiper === "undefined") return;
-  if (!document.querySelector(".reviews-swiper")) return;
-  new Swiper(".reviews-swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    loop: true,
-    coverflowEffect: {
-      rotate: 18,
-      stretch: 0,
-      depth: 120,
-      modifier: 1.2,
-      slideShadows: false,
-    },
-    autoplay: { delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true },
-    pagination: { el: ".reviews-pagination", clickable: true },
-    speed: 700,
-  });
-}
-
 function setupParticles() {
   if (typeof particlesJS === "undefined") return;
   if (!document.getElementById("hero-particles")) return;
@@ -456,19 +434,67 @@ function setupNavScroll() {
   onScroll();
 }
 
+function setupPromoToasts() {
+  const messages = [
+    { title: "¿Tesis pendiente?", text: "Te ayudamos a avanzar con claridad. Escríbenos." },
+    { title: "¿Llegas justo?", text: "Coordinamos sesiones urgentes. Cotiza en minutos." },
+    { title: "Alguien acaba de agendar", text: "Tú también puedes. Es gratis y sin compromiso." },
+    { title: "¿Sustentación cerca?", text: "Preparamos tu defensa. Escríbenos por WhatsApp." },
+    { title: "+300 proyectos elaborados", text: "Estudiantes de PUCP, UPC, USMP y más confían en nosotros." },
+    { title: "APA, Vancouver, IEEE...", text: "Manejamos todos los formatos. Consulta sin cargo." },
+    { title: "Diagnóstico gratuito", text: "Envíanos tu avance y te orientamos al toque." },
+    { title: "Metodología, redacción, análisis...", text: "Lo que necesites, lo coordinamos. Escríbenos." },
+  ];
+
+  const toast = document.getElementById("promoToast");
+  if (!toast) return;
+
+  const titleEl = toast.querySelector(".promo-toast__text strong");
+  const textEl = toast.querySelector(".promo-toast__text span");
+  const closeBtn = toast.querySelector(".promo-toast__close");
+
+  if (!titleEl || !textEl) return;
+
+  let index = Math.floor(Math.random() * messages.length);
+  let timeout;
+
+  function showToast() {
+    const msg = messages[index];
+    titleEl.textContent = msg.title;
+    textEl.textContent = msg.text;
+    toast.classList.add("show");
+
+    timeout = setTimeout(() => {
+      toast.classList.remove("show");
+      index = (index + 1) % messages.length;
+      timeout = setTimeout(showToast, 12000 + Math.random() * 8000);
+    }, 6000);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      toast.classList.remove("show");
+      clearTimeout(timeout);
+      timeout = setTimeout(showToast, 20000);
+    });
+  }
+
+  setTimeout(showToast, 8000);
+}
+
 function setupTabTitle() {
   const titles = [
     "EducaProject | Elaboramos tu tesis con calidad",
     "¿Tesis o investigación? Te ayudamos 📄",
     "Metodología, redacción y sustentación",
-    "Cotizá gratis por WhatsApp",
+    "Cotiza gratis por WhatsApp",
     "+300 proyectos elaborados ✓",
     "APA, Vancouver, IEEE y más",
     "¡No lo dejes para último momento!",
     "Respuesta rápida por WhatsApp ⚡",
   ];
 
-  const awayTitle = "¡Volvé! Te esperamos 👋 — EducaProject";
+  const awayTitle = "¡Vuelve! Te esperamos 👋 — EducaProject";
 
   let index = 0;
   let interval;
@@ -506,8 +532,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupToTop();
   setupYear();
   setupTyped();
-  setupSwiper();
   setupParticles();
   setupTilt();
+  setupPromoToasts();
   setupTabTitle();
 });

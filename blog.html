@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+
+  <title>Blog | EducaProject - Guías y tutoriales académicos</title>
+  <meta name="description" content="Tutoriales, guías paso a paso y recursos gratuitos para tu tesis e investigación académica. Estructura, APA, SPSS, redacción y sustentación." />
+  <meta name="author" content="EducaProject" />
+  <meta name="theme-color" content="#3C5EB3" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/logo-mark.webp" />
+  <link rel="apple-touch-icon" href="assets/logo-mark.webp" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog | EducaProject - Guías y tutoriales académicos" />
+  <meta property="og:description" content="Tutoriales, guías paso a paso y recursos gratuitos para tu tesis e investigación académica. Estructura, APA, SPSS, redacción y sustentación." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-page="blog">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- Iconos SVG -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M9 12l2 2 4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24">
+      <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M14.8 9.2l-2 6-6 2 2-6 6-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M4 19V5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 15v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 15V7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M16 15v-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24">
+      <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7l-5-5z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M8 13h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 17h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24">
+      <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M19 11a7 7 0 0 1-14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 19v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 22h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 22s7-4.5 7-12a7 7 0 0 0-14 0c0 7.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 11.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="topbar__text">Atención por WhatsApp • <span data-bind="location">Punta Hermosa, Perú</span></span>
+      </div>
+      <div class="topbar__right">
+        <div class="social-links">
+          <a class="social-link" data-href="facebookUrl" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img src="assets/logo-mark.webp" width="40" height="40" alt="Logo de EducaProject" decoding="async" />
+        <span class="brand__text">
+          <strong data-bind="brand">EducaProject</strong>
+          <small>Elaboración de Tesis</small>
+        </span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegación principal" id="navLinks">
+        <a href="index.html">Inicio</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html#contacto" class="nav__cta">Agendar</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm hide-sm" data-wa-message="Hola, quiero agendar una asesoría. ¿Me orientan por favor?" href="#" rel="noopener">
+          <svg class="i" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+          <span class="btn__hint" data-bind="whatsappDisplay">+51 965 148 374</span>
+        </a>
+
+        <button class="nav__burger" type="button" id="menuBtn" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="mobile-menu__inner container">
+        <a href="index.html">Inicio</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html#contacto" class="btn btn--primary btn--block">Agendar por WhatsApp</a>
+        <div class="mobile-menu__meta">
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Punta Hermosa, Perú</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- BLOG HERO -->
+    <section class="section" style="padding-top: clamp(100px, 12vw, 140px)">
+      <div class="container">
+        <div class="section__head">
+          <h1 data-reveal>Blog y Guías</h1>
+          <p class="muted" data-reveal>Tutoriales, guías paso a paso y recursos gratuitos para tu tesis e investigación académica.</p>
+        </div>
+
+        <div class="blog-filters" data-reveal>
+          <button class="blog-filter blog-filter--active" data-filter="all">Todos</button>
+          <button class="blog-filter" data-filter="tesis">Tesis</button>
+          <button class="blog-filter" data-filter="apa">APA</button>
+          <button class="blog-filter" data-filter="analisis">Análisis</button>
+          <button class="blog-filter" data-filter="redaccion">Redacción</button>
+          <button class="blog-filter" data-filter="sustentacion">Sustentación</button>
+        </div>
+
+        <div class="blog-grid">
+          <article class="blog-card" data-category="tesis" data-reveal>
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 13.webp" alt="Estructura de tesis académica" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #3C5EB3">Tesis</span>
+              <h3><a href="#">Cómo estructurar tu tesis: Guía paso a paso</a></h3>
+              <p class="muted">Aprende a organizar los capítulos de tu tesis desde la introducción hasta las conclusiones. Estructura clara para cualquier universidad.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="apa" data-reveal>
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 20.webp" alt="Manual de normas APA 7ma edición" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #4D7EDD">APA</span>
+              <h3><a href="#">Normas APA 7: Referencias y citas correctas</a></h3>
+              <p class="muted">Guía completa para aplicar normas APA 7ma edición. Citas textuales, paráfrasis, referencias bibliográficas y formato general.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="analisis" data-reveal>
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 11.webp" alt="Análisis estadístico con SPSS" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #217346">Análisis</span>
+              <h3><a href="#">Análisis de datos con SPSS: Tutorial básico</a></h3>
+              <p class="muted">Aprende a usar SPSS para tu tesis. Ingreso de datos, estadística descriptiva, pruebas de hipótesis e interpretación de resultados.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="redaccion" data-reveal>
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 14.webp" alt="Redacción de resultados de investigación" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #E34C26">Redacción</span>
+              <h3><a href="#">Cómo escribir los resultados de tu investigación</a></h3>
+              <p class="muted">Guía para redactar el capítulo de resultados. Tablas, figuras, interpretación de datos y conexión con tus objetivos de investigación.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="sustentacion" data-reveal>
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 15.webp" alt="Preparación para sustentación de tesis" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #3776AB">Sustentación</span>
+              <h3><a href="#">Preparación para la sustentación de tesis</a></h3>
+              <p class="muted">Consejos para preparar tu sustentación: estructura de la presentación, manejo de preguntas del jurado y control de nervios.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+
+          <article class="blog-card blog-card--placeholder" data-category="all" data-reveal>
+            <div class="blog-card__body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem">
+              <svg class="i" style="width:48px;height:48px;color:var(--muted);margin-bottom:1rem" aria-hidden="true"><use href="#i-doc"></use></svg>
+              <h3>Próximamente: más guías</h3>
+              <p class="muted">Estamos preparando nuevos tutoriales. Síguenos en redes para enterarte primero.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" aria-label="CTA">
+      <div class="container final-cta__inner" data-reveal>
+        <div>
+          <h2>¿Necesitas ayuda con tu tesis?</h2>
+          <p class="muted">Escríbenos con los requisitos y te orientamos al instante.</p>
+        </div>
+        <div class="final-cta__actions">
+          <a class="btn btn--primary" href="index.html#contacto">
+            Agendar ahora
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn--ghost" href="index.html">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Onda de transición al footer -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,90 720,0 1080,50 C1260,75 1380,20 1440,30 L1440,90 L0,90 Z" fill="#1A3A6B"/>
+    </svg>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo-mark.webp" width="56" height="56" alt="Logo de EducaProject" loading="lazy" decoding="async" />
+        <div>
+          <strong data-bind="brand">EducaProject</strong>
+          <p class="muted">Elaboración de Tesis</p>
+        </div>
+      </div>
+
+      <div class="footer__cols">
+        <div>
+          <h4>Secciones</h4>
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#paraquien">Para ti</a>
+          <a href="index.html#proceso">Proceso</a>
+          <a href="index.html#entregables">Entregables</a>
+          <a href="index.html#opiniones">Opiniones</a>
+          <a href="index.html#contacto">Contacto</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacidad</a>
+          <a href="terms.html">Términos</a>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <a data-wa-message="Hola, quiero información sobre elaboración de tesis. ¿Me orientan?" href="#" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg> WhatsApp
+          </a>
+          <a data-href="facebookUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg> Facebook
+          </a>
+          <a data-href="tiktokUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg> TikTok
+          </a>
+          <a data-href="instagramUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram
+          </a>
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Punta Hermosa, Perú</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span class="muted">&copy; <span id="year"></span> <span data-bind="brand">EducaProject</span>. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Toast promocional -->
+  <div class="promo-toast" id="promoToast" role="status" aria-live="polite">
+    <div class="promo-toast__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <div class="promo-toast__text">
+      <strong></strong>
+      <span></span>
+    </div>
+    <button class="promo-toast__close" type="button" aria-label="Cerrar">&times;</button>
+  </div>
+
+  <!-- Floating buttons -->
+  <button class="to-top" id="toTop" type="button" aria-label="Volver arriba">&#8593;</button>
+
+  <div class="bottom-bar" id="bottomBar" aria-label="Acciones rápidas">
+    <a class="btn btn--primary btn--block" data-wa-message="Hola, quiero agendar una asesoría. ¿Podemos coordinar?" href="#" rel="noopener">
+      <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+      WhatsApp
+    </a>
+    <a class="btn btn--soft btn--block" href="index.html#contacto">Formulario</a>
+  </div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Vanilla Tilt -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
