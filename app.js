@@ -456,6 +456,41 @@ function setupNavScroll() {
   onScroll();
 }
 
+function setupTabTitle() {
+  const titles = [
+    "EducaProject | Elaboramos tu tesis con calidad",
+    "¿Tesis o investigación? Te ayudamos 📄",
+    "Metodología, redacción y sustentación",
+    "Cotizá gratis por WhatsApp",
+    "+300 proyectos elaborados ✓",
+    "APA, Vancouver, IEEE y más",
+    "¡No lo dejes para último momento!",
+    "Respuesta rápida por WhatsApp ⚡",
+  ];
+
+  const awayTitle = "¡Volvé! Te esperamos 👋 — EducaProject";
+
+  let index = 0;
+  let interval;
+
+  function rotate() {
+    document.title = titles[index];
+    index = (index + 1) % titles.length;
+  }
+
+  interval = setInterval(rotate, 3500);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearInterval(interval);
+      document.title = awayTitle;
+    } else {
+      rotate();
+      interval = setInterval(rotate, 3500);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   bindConfig();
   bindWhatsAppLinks();
@@ -474,4 +509,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSwiper();
   setupParticles();
   setupTilt();
+  setupTabTitle();
 });
