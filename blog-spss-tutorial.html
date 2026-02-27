@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="es-PE" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Analisis de datos con SPSS: Tutorial basico | EducaProject Blog</title>
+  <meta name="description" content="Tutorial paso a paso para usar SPSS en tu tesis. Estadistica descriptiva, pruebas de hipotesis, correlacion, regresion e interpretacion de resultados." />
+  <meta name="author" content="EducaProject" />
+  <meta name="theme-color" content="#0F1A2E" />
+  <link rel="icon" href="assets/logo-mark.webp" />
+  <link rel="apple-touch-icon" href="assets/logo-mark.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-page="blog">
+
+  <!-- SVG Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 22s7-4.5 7-12a7 7 0 0 0-14 0c0 7.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 11.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4z" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+  </svg>
+
+  <!-- Header -->
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img src="assets/logo-mark.webp" width="40" height="40" alt="Logo de EducaProject" decoding="async" />
+        <span class="brand__text">
+          <strong>EducaProject</strong>
+          <small>Elaboracion de Tesis</small>
+        </span>
+      </a>
+      <nav class="nav__links" aria-label="Navegacion principal">
+        <a href="index.html">Inicio</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html#contacto" class="nav__cta">Agendar</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm hide-sm" data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
+          <svg class="i" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+          <span class="btn__hint" data-bind="whatsappDisplay">+51 965 148 374</span>
+        </a>
+        <button class="nav__burger" type="button" id="menuBtn" aria-label="Abrir menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <div class="mobile-menu__inner container">
+        <a href="index.html">Inicio</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html#contacto" class="btn btn--primary btn--block">Agendar por WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="article-hero__img">
+        <img src="Imagenes/imagen 11.webp" alt="Analisis estadistico con SPSS" width="1200" height="600" decoding="async" />
+      </div>
+      <div class="article-hero__overlay"></div>
+      <div class="article-hero__content container">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Inicio</a>
+          <span>/</span>
+          <a href="blog.html">Blog</a>
+          <span>/</span>
+          <span>Tutorial SPSS</span>
+        </nav>
+        <h1>Analisis de datos con SPSS: Tutorial basico</h1>
+        <div class="article-meta">
+          <span class="article-meta__badge" style="background:#217346">Analisis</span>
+          <span class="article-meta__sep"></span>
+          <time datetime="2026-02">Febrero 2026</time>
+          <span class="article-meta__sep"></span>
+          <span>15 min de lectura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE LAYOUT -->
+    <div class="container">
+      <div class="article-layout">
+
+        <!-- MAIN CONTENT -->
+        <div class="article-content">
+
+          <h2 id="que-es-spss">Que es SPSS y por que usarlo en tu tesis</h2>
+          <p>SPSS (Statistical Package for the Social Sciences) es el software de analisis estadistico mas utilizado en las tesis de universidades peruanas. Si estas en carreras como Educacion, Psicologia, Administracion, Enfermeria, Ingenieria Industrial o cualquier ciencia social o de la salud, lo mas probable es que tu asesor te pida usar SPSS para procesar tus datos.</p>
+          <p>Las ventajas de SPSS para tesistas son claras:</p>
+          <ul>
+            <li><strong>Interfaz grafica amigable:</strong> no necesitas programar. Todo se hace con menus y cuadros de dialogo.</li>
+            <li><strong>Amplia variedad de pruebas estadisticas:</strong> desde frecuencias basicas hasta modelos de regresion multiple y analisis factorial.</li>
+            <li><strong>Genera tablas y graficos listos para tu tesis:</strong> puedes exportar los resultados directamente a Word.</li>
+            <li><strong>Es el estandar en universidades peruanas:</strong> la UNMSM, la PUCP, la UPC y la mayoria de universidades lo usan como herramienta principal.</li>
+          </ul>
+          <p>La version actual es IBM SPSS Statistics 29. Puedes acceder a una version de prueba gratuita de 14 dias desde el sitio web de IBM, o usar la licencia academica de tu universidad si la tiene disponible.</p>
+
+          <h2 id="interfaz-spss">La interfaz de SPSS: Vista de datos y Vista de variables</h2>
+          <p>Cuando abres SPSS, te encuentras con dos vistas principales que debes conocer bien:</p>
+
+          <h3>Vista de datos (Data View)</h3>
+          <p>Es como una hoja de calculo similar a Excel. Cada <strong>fila</strong> representa un caso (un encuestado, un paciente, un estudiante) y cada <strong>columna</strong> representa una variable (edad, genero, puntaje, etc.). Aqui es donde ingresas o importas tus datos.</p>
+
+          <h3>Vista de variables (Variable View)</h3>
+          <p>Aqui defines las propiedades de cada variable:</p>
+          <ul>
+            <li><strong>Name (Nombre):</strong> nombre corto sin espacios ni caracteres especiales (ej: "edad", "genero", "puntaje_total").</li>
+            <li><strong>Type (Tipo):</strong> numerico, cadena, fecha, etc. Para datos de encuestas, casi siempre es numerico.</li>
+            <li><strong>Width (Ancho):</strong> numero de digitos o caracteres.</li>
+            <li><strong>Decimals:</strong> cantidad de decimales (0 para variables categoricas, 2 para variables continuas).</li>
+            <li><strong>Label (Etiqueta):</strong> nombre descriptivo largo (ej: "Edad del encuestado").</li>
+            <li><strong>Values (Valores):</strong> codificacion de las categorias (ej: 1 = Masculino, 2 = Femenino).</li>
+            <li><strong>Measure (Medida):</strong> escala (para variables continuas), ordinal o nominal.</li>
+          </ul>
+
+          <div class="article-tip article-tip--info">
+            <svg class="article-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <div class="article-tip__text">
+              <strong>Consejo practico</strong>
+              Antes de ingresar datos, configura TODAS las variables en la Vista de variables. Define los nombres, etiquetas, valores y tipo de medida. Esto te ahorrara mucho tiempo despues al generar tablas y graficos, porque SPSS usara las etiquetas automaticamente.
+            </div>
+          </div>
+
+          <figure class="article-img">
+            <img src="Imagenes/imagen 24.webp" alt="Interfaz de SPSS mostrando la Vista de variables" loading="lazy" width="800" height="450" decoding="async" />
+            <figcaption>La Vista de variables te permite definir las propiedades de cada columna de datos.</figcaption>
+          </figure>
+
+          <h2 id="importar-datos">Importar y codificar datos</h2>
+          <p>Si ya tienes tus datos en Excel (que es lo mas comun), puedes importarlos facilmente a SPSS:</p>
+
+          <div class="article-steps">
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Prepara tu archivo de Excel</h4>
+                <p>La primera fila debe contener los nombres de las variables (sin espacios, sin tildes, sin caracteres especiales). Los datos deben empezar en la fila 2. Cada columna es una variable y cada fila es un caso.</p>
+              </div>
+            </div>
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Importa en SPSS</h4>
+                <p>Ve a <strong>Archivo > Abrir > Datos</strong>. En "Tipo de archivo", selecciona "Excel (*.xlsx)". Marca la casilla "Leer nombres de variables de la primera fila" y haz clic en Aceptar.</p>
+              </div>
+            </div>
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Configura las variables</h4>
+                <p>Ve a la Vista de variables y revisa que cada variable tenga el tipo, los valores y la medida correctos. Agrega etiquetas descriptivas y codifica las categorias.</p>
+              </div>
+            </div>
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Guarda el archivo</h4>
+                <p>Guarda tu archivo en formato SPSS (.sav): <strong>Archivo > Guardar como</strong>. Esto preserva toda la configuracion de variables que acabas de hacer.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Codificacion de datos</h3>
+          <p>Si tu cuestionario usa una escala de Likert (Nunca = 1, Casi nunca = 2, A veces = 3, Casi siempre = 4, Siempre = 5), debes codificar cada respuesta con su valor numerico. En la Vista de variables, usa la columna "Values" para asignar las etiquetas a cada numero.</p>
+          <p>Si tienes items invertidos (preguntas formuladas en sentido contrario), debes recodificarlos antes de calcular puntajes totales. Ve a <strong>Transformar > Recodificar en distintas variables</strong> y crea una nueva variable con los valores invertidos.</p>
+
+          <h2 id="estadistica-descriptiva">Estadistica descriptiva</h2>
+          <p>La estadistica descriptiva es lo primero que debes calcular. Te permite conocer las caracteristicas basicas de tu muestra y de tus variables.</p>
+
+          <h3>Tablas de frecuencia</h3>
+          <p>Para variables categoricas (genero, nivel educativo, estado civil), genera tablas de frecuencia:</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Estadisticos descriptivos > Frecuencias</code></p>
+          <p>Selecciona las variables que quieres analizar y haz clic en Aceptar. SPSS generara una tabla con la frecuencia absoluta, el porcentaje, el porcentaje valido y el porcentaje acumulado.</p>
+
+          <pre><code>Ejemplo de salida:
+
+Genero del encuestado
+                 Frecuencia  Porcentaje  % Valido  % Acumulado
+Masculino              67       44.7%      44.7%       44.7%
+Femenino               83       55.3%      55.3%      100.0%
+Total                 150      100.0%     100.0%</code></pre>
+
+          <h3>Medidas de tendencia central y dispersion</h3>
+          <p>Para variables numericas (puntajes, edades, notas), calcula la media, mediana, moda, desviacion estandar y rango:</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Estadisticos descriptivos > Descriptivos</code></p>
+          <p>Haz clic en "Opciones" y selecciona las estadisticas que necesitas: media, desviacion estandar, minimo, maximo, varianza.</p>
+
+          <pre><code>Ejemplo de salida:
+
+Estadisticos descriptivos
+                       N    Minimo   Maximo   Media    Desv. Est.
+Puntaje_Liderazgo    150    32.00    95.00    67.45      14.238
+Puntaje_Satisfaccion 150    28.00    100.00   72.18      16.524
+N valido             150</code></pre>
+
+          <h2 id="pruebas-normalidad">Pruebas de normalidad</h2>
+          <p>Antes de aplicar cualquier prueba de hipotesis, debes verificar si tus datos siguen una distribucion normal. Esto determina si usaras pruebas parametricas o no parametricas.</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Estadisticos descriptivos > Explorar</code></p>
+          <p>Mueve tus variables a "Lista de dependientes", haz clic en "Graficos" y marca "Graficos de normalidad con pruebas". Luego haz clic en Aceptar.</p>
+
+          <p>SPSS te dara dos pruebas:</p>
+          <ul>
+            <li><strong>Shapiro-Wilk:</strong> para muestras menores a 50 casos. Es la prueba mas potente para muestras pequeñas.</li>
+            <li><strong>Kolmogorov-Smirnov:</strong> para muestras de 50 o mas casos.</li>
+          </ul>
+
+          <pre><code>Pruebas de normalidad
+                    Kolmogorov-Smirnov          Shapiro-Wilk
+                    Estadistico  gl    Sig.     Estadistico  gl    Sig.
+Puntaje_Liderazgo     .068      150   .084        .981     150   .037
+Puntaje_Satisfaccion  .072      150   .053        .978     150   .018</code></pre>
+
+          <div class="article-tip article-tip--success">
+            <svg class="article-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="article-tip__text">
+              <strong>Como interpretar</strong>
+              Si el valor de Sig. (p-valor) es <strong>mayor a 0.05</strong>, los datos siguen una distribucion normal y puedes usar pruebas parametricas. Si es <strong>menor a 0.05</strong>, los datos NO son normales y debes usar pruebas no parametricas.
+            </div>
+          </div>
+
+          <h2 id="pruebas-parametricas">Pruebas parametricas: t de Student y ANOVA</h2>
+          <p>Las pruebas parametricas se usan cuando tus datos cumplen los supuestos de normalidad y homocedasticidad (varianzas iguales).</p>
+
+          <h3>t de Student para muestras independientes</h3>
+          <p>Se usa para comparar las medias de dos grupos independientes. Por ejemplo: ¿Existe diferencia significativa en el rendimiento academico entre hombres y mujeres?</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Comparar medias > Prueba T para muestras independientes</code></p>
+          <p>Mueve la variable dependiente (rendimiento) a "Variables de prueba" y la variable de agrupacion (genero) a "Variable de agrupacion". Define los grupos (1 = Masculino, 2 = Femenino).</p>
+
+          <pre><code>Prueba de muestras independientes
+                          Prueba de Levene    Prueba T
+                          F       Sig.    t       gl      Sig.(bilateral)
+Rendimiento  Varianzas
+             iguales     1.234   .268    2.456    148      .015
+             Varianzas
+             no iguales                  2.461   146.8     .015</code></pre>
+
+          <p><strong>Interpretacion:</strong> Primero revisa la prueba de Levene. Si Sig. > 0.05 (en este caso 0.268 > 0.05), asume varianzas iguales y lee la primera fila. El valor de Sig. bilateral es 0.015 &lt; 0.05, por lo tanto existe diferencia significativa entre las medias de ambos grupos.</p>
+
+          <h3>ANOVA de un factor</h3>
+          <p>Se usa para comparar las medias de tres o mas grupos. Por ejemplo: ¿Existe diferencia en el rendimiento segun el turno (mañana, tarde, noche)?</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Comparar medias > ANOVA de un factor</code></p>
+
+          <figure class="article-img">
+            <img src="Imagenes/imagen 25.webp" alt="Resultados estadisticos en SPSS" loading="lazy" width="800" height="450" decoding="async" />
+            <figcaption>SPSS genera tablas de resultados que puedes copiar directamente a tu tesis.</figcaption>
+          </figure>
+
+          <h2 id="pruebas-no-parametricas">Pruebas no parametricas</h2>
+          <p>Si tus datos no cumplen el supuesto de normalidad, debes usar pruebas no parametricas. Estas son las mas comunes en tesis peruanas:</p>
+
+          <h3>Chi-cuadrado de independencia</h3>
+          <p>Se usa para determinar si existe relacion entre dos variables categoricas (nominales u ordinales).</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Estadisticos descriptivos > Tablas cruzadas</code></p>
+          <p>Haz clic en "Estadisticos" y marca "Chi-cuadrado". Si el valor de Sig. &lt; 0.05, existe relacion significativa entre las variables.</p>
+
+          <h3>U de Mann-Whitney</h3>
+          <p>Es la alternativa no parametrica a la t de Student. Se usa para comparar dos grupos independientes cuando los datos no son normales.</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Pruebas no parametricas > Cuadros de dialogo antiguos > 2 muestras independientes</code></p>
+
+          <h3>Kruskal-Wallis</h3>
+          <p>Es la alternativa no parametrica al ANOVA. Se usa para comparar tres o mas grupos independientes.</p>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Pruebas no parametricas > Cuadros de dialogo antiguos > K muestras independientes</code></p>
+
+          <h2 id="correlacion-regresion">Correlacion y regresion lineal</h2>
+          <p>Estas son las pruebas mas solicitadas en tesis correlacionales, que son el tipo de tesis mas comun en universidades peruanas.</p>
+
+          <h3>Correlacion de Pearson (datos normales)</h3>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Correlaciones > Bivariadas</code></p>
+          <p>Selecciona tus variables, marca "Pearson" y haz clic en Aceptar.</p>
+
+          <pre><code>Correlaciones
+                         Liderazgo    Satisfaccion
+Liderazgo    Pearson        1           .782**
+             Sig.                       .000
+             N             150          150
+Satisfaccion Pearson       .782**        1
+             Sig.          .000
+             N             150          150
+** La correlacion es significativa en el nivel 0.01 (bilateral).</code></pre>
+
+          <p><strong>Interpretacion:</strong> El coeficiente de Pearson es 0.782, lo que indica una correlacion positiva alta. El valor Sig. es 0.000 &lt; 0.05, por lo tanto la correlacion es estadisticamente significativa. Puedes concluir que existe una relacion positiva significativa entre liderazgo y satisfaccion.</p>
+
+          <h3>Correlacion de Spearman (datos no normales)</h3>
+          <p>Si tus datos no son normales, usa el coeficiente de Spearman en lugar de Pearson. La ruta es la misma, pero marca "Spearman" en lugar de "Pearson".</p>
+
+          <h3>Regresion lineal simple</h3>
+          <p><strong>Ruta en SPSS:</strong> <code>Analizar > Regresion > Lineal</code></p>
+          <p>Mueve la variable dependiente y la variable independiente a sus respectivas casillas. SPSS te dara el coeficiente de determinacion (R cuadrado), los coeficientes de regresion y la prueba ANOVA del modelo.</p>
+
+          <div class="article-tip article-tip--warn">
+            <svg class="article-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div class="article-tip__text">
+              <strong>Error comun</strong>
+              No confundas correlacion con causalidad. Que dos variables esten correlacionadas no significa que una cause la otra. La correlacion solo mide la fuerza y direccion de la relacion lineal entre variables.
+            </div>
+          </div>
+
+          <h2 id="interpretar-resultados">Como interpretar y reportar resultados</h2>
+          <p>Interpretar correctamente la salida de SPSS es tan importante como saber ejecutar las pruebas. Aqui tienes una guia rapida para interpretar los valores clave:</p>
+
+          <ul>
+            <li><strong>p-valor (Sig.):</strong> si es menor a 0.05, el resultado es estadisticamente significativo. Rechazas la hipotesis nula.</li>
+            <li><strong>Coeficiente de correlacion (r o rho):</strong> de 0 a 0.25 = muy baja; 0.25 a 0.50 = baja; 0.50 a 0.75 = moderada; 0.75 a 1.00 = alta.</li>
+            <li><strong>R cuadrado:</strong> indica el porcentaje de la varianza de la variable dependiente que es explicada por la variable independiente. Un R2 de 0.61 significa que la variable independiente explica el 61% de la varianza.</li>
+            <li><strong>t y F:</strong> son estadisticos de prueba. Se usan junto con el p-valor para tomar decisiones.</li>
+          </ul>
+
+          <p>Al reportar resultados en tu tesis, sigue este formato APA:</p>
+          <blockquote>
+            <p>"Se encontro una correlacion positiva alta y estadisticamente significativa entre el liderazgo transformacional y la satisfaccion laboral (rho = .782, p = .000 &lt; .05), por lo cual se rechaza la hipotesis nula y se acepta la hipotesis alterna."</p>
+          </blockquote>
+
+          <h2 id="exportar-tablas">Exportar tablas y graficos para tu tesis</h2>
+          <p>Una vez que tienes tus resultados en SPSS, necesitas llevarlos a Word para tu tesis. Hay varias formas de hacerlo:</p>
+
+          <div class="article-steps">
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Copiar y pegar desde el Visor de resultados</h4>
+                <p>Selecciona la tabla en el Visor de resultados, haz clic derecho > Copiar. En Word, usa "Pegado especial > Imagen" para que se vea limpio. Luego puedes reformatear la tabla manualmente segun APA.</p>
+              </div>
+            </div>
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Exportar a Word directamente</h4>
+                <p>Ve a <strong>Archivo > Exportar</strong> en el Visor de resultados. Selecciona formato "Documento Word (*.docx)" y elige las tablas que deseas exportar. Esto genera un archivo Word con todas las tablas seleccionadas.</p>
+              </div>
+            </div>
+            <div class="article-step">
+              <div class="article-step__body">
+                <h4>Recrear las tablas en Word</h4>
+                <p>La opcion mas profesional es recrear las tablas manualmente en Word siguiendo el formato APA: sin lineas verticales, con solo 3 lineas horizontales (arriba, debajo del encabezado y abajo). Esto toma mas tiempo pero da el mejor resultado.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>SPSS es una herramienta poderosa que simplifica enormemente el analisis estadistico de tu tesis. Con esta guia tienes las bases para realizar los analisis mas comunes. A medida que avances, iras dominando funciones mas avanzadas segun las necesidades de tu investigacion.</p>
+
+          <div class="article-tip article-tip--info">
+            <svg class="article-tip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <div class="article-tip__text">
+              <strong>¿Necesitas ayuda con el analisis estadistico?</strong>
+              En EducaProject te ayudamos con el procesamiento de datos en SPSS: desde el ingreso de datos hasta la interpretacion de resultados. Escribenos por WhatsApp y te orientamos.
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="article-share">
+            <span>Compartir:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener" aria-label="Compartir en Facebook">
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg>
+            </a>
+            <a href="https://wa.me/?text=Tutorial%20SPSS%20para%20tesis" target="_blank" rel="noopener" aria-label="Compartir en WhatsApp">
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="article-sidebar">
+          <div class="article-toc">
+            <h3 class="article-toc__title">Contenido</h3>
+            <ul class="article-toc__list">
+              <li><a href="#que-es-spss">Que es SPSS</a></li>
+              <li><a href="#interfaz-spss">La interfaz de SPSS</a></li>
+              <li><a href="#importar-datos">Importar y codificar datos</a></li>
+              <li><a href="#estadistica-descriptiva">Estadistica descriptiva</a></li>
+              <li><a href="#pruebas-normalidad">Pruebas de normalidad</a></li>
+              <li><a href="#pruebas-parametricas">Pruebas parametricas</a></li>
+              <li><a href="#pruebas-no-parametricas">Pruebas no parametricas</a></li>
+              <li><a href="#correlacion-regresion">Correlacion y regresion</a></li>
+              <li><a href="#interpretar-resultados">Interpretar resultados</a></li>
+              <li><a href="#exportar-tablas">Exportar tablas y graficos</a></li>
+            </ul>
+          </div>
+          <div class="article-sidebar__cta">
+            <h4>¿Necesitas ayuda con SPSS?</h4>
+            <p>Te ayudamos con el analisis estadistico y la interpretacion de resultados de tu tesis.</p>
+            <a class="btn btn--primary btn--block btn--sm" data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
+              <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+              Escribenos por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <section class="article-related">
+      <div class="container">
+        <h2>Articulos relacionados</h2>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 14.webp" alt="Resultados de investigacion" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #E34C26">Redaccion</span>
+              <h3><a href="blog-resultados-investigacion.html">Como escribir los resultados de tu investigacion</a></h3>
+              <p class="muted">Guia para redactar y presentar el capitulo de resultados.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="blog-card__img">
+              <img src="Imagenes/imagen 20.webp" alt="Normas APA 7" loading="lazy" width="400" height="250" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__badge" style="--badge-color: #4D7EDD">APA</span>
+              <h3><a href="blog-normas-apa-7.html">Normas APA 7: Referencias y citas correctas</a></h3>
+              <p class="muted">Aprende a citar y referenciar correctamente en formato APA 7.</p>
+              <time class="blog-card__date muted">Febrero 2026</time>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="final-cta" aria-label="CTA">
+      <div class="container final-cta__inner">
+        <div>
+          <h2>¿Necesitas ayuda con el analisis estadistico?</h2>
+          <p class="muted">Te ayudamos con SPSS, Excel y la interpretacion de resultados de tu tesis.</p>
+        </div>
+        <div class="final-cta__actions">
+          <a class="btn btn--primary" data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
+            Escribenos por WhatsApp
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"></use></svg>
+          </a>
+          <a class="btn btn--ghost" href="blog.html">Ver mas articulos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer wave -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,90 720,0 1080,50 C1260,75 1380,20 1440,30 L1440,90 L0,90 Z" fill="#1A3A6B"/>
+    </svg>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo-mark.webp" width="56" height="56" alt="Logo de EducaProject" loading="lazy" decoding="async" />
+        <div>
+          <strong data-bind="brand">EducaProject</strong>
+          <p class="muted">Elaboracion de Tesis</p>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Secciones</h4>
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacidad</a>
+          <a href="terms.html">Terminos</a>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <a data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg> WhatsApp
+          </a>
+          <a data-href="facebookUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg> Facebook
+          </a>
+          <a data-href="tiktokUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg> TikTok
+          </a>
+          <a data-href="instagramUrl" href="#" target="_blank" rel="noopener">
+            <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram
+          </a>
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Punta Hermosa, Peru</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span class="muted">&copy; <span id="year"></span> <span data-bind="brand">EducaProject</span>. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Volver arriba">&#8593;</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
