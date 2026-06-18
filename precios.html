@@ -18,6 +18,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Legibilidad / contraste (paginas internas) - WCAG */
+    main p, main li { font-size: 16.5px; line-height: 1.72; }
+    main .muted { color: rgba(240,238,232,.90); }
+    main .section__head h1, main h1 { color: var(--text); }
+    .about-value h3, .step h3, .accordion__btn, .testimonial strong { color: var(--text); }
+    .accordion__panel p { color: rgba(240,238,232,.92); font-size: 16px; }
+    .step__body p, .about-value p { color: rgba(240,238,232,.90); }
+    .page-chips .chip { color: var(--text); font-weight: 700; border-color: rgba(212,174,90,.45); }
+    .testimonial p { color: rgba(240,238,232,.92); }
+  </style>
 </head>
 <body data-page="precios">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -104,27 +115,27 @@
         <div class="about-values" data-reveal>
           <div class="about-value">
             <h3>Tarea / control</h3>
-            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--brand)">S/ ___</p>
+            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--gold)">S/ ___</p>
             <p class="muted">Ejercicios, cuestionarios, prácticas calificadas.</p>
           </div>
           <div class="about-value">
             <h3>Informe / laboratorio</h3>
-            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--brand)">S/ ___</p>
+            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--gold)">S/ ___</p>
             <p class="muted">Informes de prácticas, laboratorios y proyectos.</p>
           </div>
           <div class="about-value">
             <h3>Ensayo / monografía</h3>
-            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--brand)">S/ ___</p>
+            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--gold)">S/ ___</p>
             <p class="muted">Redacción académica con citas y referencias.</p>
           </div>
           <div class="about-value">
             <h3>Presentación (PPT)</h3>
-            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--brand)">S/ ___</p>
+            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--gold)">S/ ___</p>
             <p class="muted">Diapositivas claras y ordenadas para exponer.</p>
           </div>
           <div class="about-value">
             <h3>Prueba / examen en línea</h3>
-            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--brand)">Según curso</p>
+            <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;margin:6px 0;color:var(--gold)">Según curso</p>
             <p class="muted">Cuéntanos día, hora y duración para confirmar.</p>
           </div>
         </div>
