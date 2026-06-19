@@ -4,8 +4,8 @@
  */
 const CONFIG = {
   brand: "EducaProject",
-  whatsappNumber: "51965148374",      // Formato internacional sin + ni espacios
-  whatsappDisplay: "+51 965 148 374",
+  whatsappNumber: "51922503398",      // Formato internacional sin + ni espacios
+  whatsappDisplay: "+51 922 503 398",
   location: "Punta Hermosa, Perú",
   facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
   tiktokUrl: "https://www.tiktok.com/@educaproject_",
