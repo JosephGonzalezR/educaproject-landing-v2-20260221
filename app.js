@@ -6,7 +6,7 @@ const CONFIG = {
   brand: "EducaProject",
   whatsappNumber: "51922503398",      // Formato internacional sin + ni espacios
   whatsappDisplay: "+51 922 503 398",
-  location: "Punta Hermosa, Perú",
+  location: "Manuel del Pino 252, Lince",
   facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
   tiktokUrl: "https://www.tiktok.com/@educaproject_",
   instagramUrl: "https://www.instagram.com/educaproject_peru/",

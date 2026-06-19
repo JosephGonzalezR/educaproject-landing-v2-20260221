@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>Cómo pagar | EducaProject Perú</title>
-  <meta name="description" content="Datos de pago de EducaProject Perú: BCP, Yape, IZIPAY y BCP POS. A nombre de Educaproject SAC." />
+  <meta name="description" content="Datos de pago de EducaProject Perú: BCP, Yape, IZIPAY y BCP POS." />
   <meta name="author" content="EducaProject" />
   <meta name="theme-color" content="#3C5EB3" />
   <link rel="icon" href="assets/logo-mark.webp" />
   <link rel="apple-touch-icon" href="assets/logo-mark.webp" />
   <meta property="og:title" content="Cómo pagar | EducaProject Perú" />
-  <meta property="og:description" content="Datos de pago de EducaProject Perú: BCP, Yape, IZIPAY y BCP POS. A nombre de Educaproject SAC." />
+  <meta property="og:description" content="Datos de pago de EducaProject Perú: BCP, Yape, IZIPAY y BCP POS." />
   <meta property="og:image" content="assets/og-image.png" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,6 +28,30 @@
     .step__body p, .about-value p { color: rgba(240,238,232,.90); }
     .page-chips .chip { color: var(--text); font-weight: 700; border-color: rgba(212,174,90,.45); }
     .testimonial p { color: rgba(240,238,232,.92); }
+  </style>
+  <style>
+    .bank-wrap{max-width:620px;margin:8px auto 36px}
+    .bank-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:18px;padding:26px 24px;box-shadow:0 14px 44px rgba(0,0,0,.32)}
+    .bank-card__head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+    .bank-card__head h2{margin:0;font-family:'Playfair Display',serif;font-size:21px;color:var(--text)}
+    .copy-all{border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+    .copy-all:hover{background:var(--gold);color:#0C1526}
+    .copy-all.done{background:#34d399;border-color:#34d399;color:#06281c}
+    .bank-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+    .bank-row:last-of-type{border-bottom:none}
+    .bank-row .k{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+    .bank-row .v{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;font-size:15px;font-weight:600;color:var(--text);text-align:right}
+    .bank-row .v.big{font-size:18px;font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;color:var(--gold)}
+    .copy-btn{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+    .copy-btn:hover{border-color:var(--gold);color:var(--gold)}
+    .copy-btn.done{color:#34d399;border-color:#34d399}
+    .pay-note{margin-top:16px;background:rgba(212,174,90,.10);border:1px solid rgba(212,174,90,.32);border-radius:12px;padding:14px 16px;color:var(--text);font-size:14px;line-height:1.6}
+    .steps-pay{max-width:620px;margin:0 auto 8px}
+    .steps-pay h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--text);margin-bottom:14px;text-align:center}
+    .steps-pay ol{padding:0;list-style:none;counter-reset:s;margin:0}
+    .steps-pay li{position:relative;padding:12px 0 12px 46px;counter-increment:s;color:rgba(240,238,232,.92);font-size:15.5px;line-height:1.6}
+    .steps-pay li::before{content:counter(s);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#0C1526;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .steps-pay li strong{color:var(--text)}
   </style>
 </head>
 <body data-page="pago">
@@ -51,7 +75,7 @@
     <div class="container topbar__inner">
       <div class="topbar__left">
         <span class="dot" aria-hidden="true"></span>
-        <span class="topbar__text">Atención por WhatsApp &bull; <span data-bind="location">Punta Hermosa, Perú</span></span>
+        <span class="topbar__text">Atención por WhatsApp &bull; <span data-bind="location">Manuel del Pino 252, Lince</span></span>
       </div>
       <div class="topbar__right">
         <div class="social-links">
@@ -95,11 +119,11 @@
     </div>
   </header>
 
-  <main id="contenido">
+    <main id="contenido">
     <section class="section" style="padding-bottom:6px">
       <div class="container" style="text-align:center">
         <h1 data-reveal>Cómo realizar tu pago</h1>
-        <p class="muted" data-reveal>Paga de forma simple y segura. Todas las cuentas están a nombre de Educaproject SAC.</p>
+        <p class="muted" data-reveal>Paga por BCP o Yape. Aquí tienes los datos (con botón para copiar) y los pasos para confirmar.</p>
         <div class="page-chips" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px">
           <a class="chip" href="precios.html">Precios</a>
           <a class="chip" href="procedimiento.html">Cómo trabajamos</a>
@@ -109,53 +133,42 @@
         </div>
       </div>
     </section>
-    <section class="section">
+
+    <section class="section" style="padding-top:6px;padding-bottom:6px">
       <div class="container">
-        <div class="section__head"><h2 data-reveal>Datos de pago</h2></div>
-        <div class="about-values" data-reveal>
-          <div class="about-value">
-            <div class="about-value__icon"><svg class="i" aria-hidden="true"><use href="#i-doc"></use></svg></div>
-            <h3>BCP</h3>
-            <p class="muted">Cuenta soles:<br><strong style="color:var(--text);font-family:ui-monospace,Menlo,Consolas,monospace">194-1700728-0-69</strong></p>
-            <p class="muted">CCI:<br><strong style="color:var(--text);font-family:ui-monospace,Menlo,Consolas,monospace">00219400170072806990</strong></p>
-          </div>
-          <div class="about-value">
-            <div class="about-value__icon"><svg class="i" aria-hidden="true"><use href="#i-check"></use></svg></div>
-            <h3>Yape</h3>
-            <p class="muted">Número:<br><strong style="color:var(--text);font-family:ui-monospace,Menlo,Consolas,monospace">965 148 374</strong></p>
-            <p class="muted">A nombre de Educaproject SAC.</p>
-          </div>
-          <div class="about-value">
-            <div class="about-value__icon"><svg class="i" aria-hidden="true"><use href="#i-shield"></use></svg></div>
-            <h3>Tarjeta</h3>
-            <p class="muted">También aceptamos tarjeta de crédito por <strong style="color:var(--text)">IZIPAY</strong> o <strong style="color:var(--text)">BCP POS</strong>.</p>
+        <div class="bank-wrap">
+          <div class="bank-card">
+            <div class="bank-card__head">
+              <h2>Datos para tu pago</h2>
+              <button class="copy-all" type="button" data-copy="BCP Cuenta soles: 194-1700728-0-69&#10;CCI: 00219400170072806990&#10;Yape: 965 148 374">📋 Copiar todo</button>
+            </div>
+            <div class="bank-row"><span class="k">BCP · Cuenta soles</span><span class="v big"><span class="vtext">194-1700728-0-69</span><button class="copy-btn" type="button" data-copy="194-1700728-0-69" aria-label="Copiar cuenta">Copiar</button></span></div>
+            <div class="bank-row"><span class="k">BCP · CCI</span><span class="v"><span class="vtext">00219400170072806990</span><button class="copy-btn" type="button" data-copy="00219400170072806990" aria-label="Copiar CCI">Copiar</button></span></div>
+            <div class="bank-row"><span class="k">Yape</span><span class="v big"><span class="vtext">965 148 374</span><button class="copy-btn" type="button" data-copy="965 148 374" aria-label="Copiar Yape">Copiar</button></span></div>
+            <div class="bank-row"><span class="k">Tarjeta</span><span class="v"><span class="vtext">IZIPAY o BCP POS</span></span></div>
+            <div class="pay-note">Cuando pagues, <strong>escribe tu nombre</strong> en el mensaje o glosa y envíanos el <strong>comprobante</strong> por WhatsApp. Así validamos tu pago más rápido.</div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section section--alt">
+
+    <section class="section section--alt" style="padding-top:6px">
       <div class="container">
-        <div class="section__head"><h2 data-reveal>Para confirmar tu pago</h2></div>
-        <div class="steps">
-          <div class="step" data-reveal>
-            <div class="step__num">1</div>
-            <div class="step__body"><h3>Realiza el pago</h3><p class="muted">Transfiere o yapea el monto acordado (anticipo o total) a una de las cuentas de abajo.</p></div>
-          </div>
-          <div class="step" data-reveal>
-            <div class="step__num">2</div>
-            <div class="step__body"><h3>Pon tu nombre</h3><p class="muted">Escribe tu nombre en el mensaje o glosa del pago. Así lo validamos más rápido.</p></div>
-          </div>
-          <div class="step" data-reveal>
-            <div class="step__num">3</div>
-            <div class="step__body"><h3>Envía el comprobante</h3><p class="muted">Mándanos la captura o el comprobante por WhatsApp y empezamos tu trabajo.</p></div>
-          </div>
+        <div class="steps-pay">
+          <h2>Para confirmar tu pago</h2>
+          <ol>
+            <li>Realiza el pago por <strong>BCP</strong> o <strong>Yape</strong> por el monto acordado.</li>
+            <li>Escribe tu <strong>nombre</strong> en el mensaje o glosa del pago.</li>
+            <li>Envíanos el <strong>comprobante</strong> (captura) por WhatsApp y empezamos.</li>
+          </ol>
         </div>
       </div>
     </section>
+
     <section class="final-cta" aria-label="Cierre">
       <div class="container final-cta__inner" data-reveal>
-        <div><h2>¿Listo para empezar?</h2><p class="muted">Envíanos tu comprobante por WhatsApp y arrancamos.</p></div>
-        <div class="final-cta__actions"><a class="btn btn--primary" data-wa-message="Hola, quiero cotizar un trabajo. Te paso mis indicaciones." href="#" rel="noopener"><svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg> Cotizar por WhatsApp</a><a class="btn btn--ghost" href="procedimiento.html">Cómo trabajamos</a></div>
+        <div><h2>Ya pagué, ¿ahora?</h2><p class="muted">Envíanos el comprobante por WhatsApp y tu trabajo entra en proceso.</p></div>
+        <div class="final-cta__actions"><a class="btn btn--primary" data-wa-message="Hola, acabo de realizar el pago. Adjunto el comprobante." href="#" rel="noopener"><svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg> Enviar comprobante</a></div>
       </div>
     </section>
   </main>
@@ -192,7 +205,7 @@
           <a data-href="facebookUrl" href="#" target="_blank" rel="noopener"><svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg> Facebook</a>
           <a data-href="tiktokUrl" href="#" target="_blank" rel="noopener"><svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg> TikTok</a>
           <a data-href="instagramUrl" href="#" target="_blank" rel="noopener"><svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram</a>
-          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Punta Hermosa, Perú</span></span>
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Manuel del Pino 252, Lince</span></span>
         </div>
       </div>
     </div>
@@ -208,5 +221,16 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="app.js"></script>
+  <script>
+  (function(){
+    function agsCopy(t){
+      if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);
+      return new Promise(function(res,rej){var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');res();}catch(e){rej(e);}document.body.removeChild(ta);});
+    }
+    document.querySelectorAll('[data-copy]').forEach(function(b){
+      b.addEventListener('click',function(){agsCopy(b.getAttribute('data-copy')).then(function(){var o=b.textContent;b.textContent=b.classList.contains('copy-all')?'\u2713 Copiado':'\u2713';b.classList.add('done');setTimeout(function(){b.textContent=o;b.classList.remove('done');},1500);}).catch(function(){});});
+    });
+  })();
+  </script>
 </body>
 </html>
