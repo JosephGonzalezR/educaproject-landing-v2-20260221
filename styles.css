@@ -1997,6 +1997,22 @@ html[data-theme="dark"] .hero__bg {
   font-size:14px;
   white-space:nowrap;
 }
+/* Chips con LOGO en imagen (estandarizado con Chile) */
+.inst-chip img{
+  height:44px;
+  width:auto;
+  max-width:170px;
+  object-fit:contain;
+  display:block;
+}
+.inst-chip:has(img){
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
+  min-width:130px;
+  border-radius:16px;
+}
 .inst-chip--more{
   background:var(--brand);
   color:#fff;
