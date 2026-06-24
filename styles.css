@@ -2012,6 +2012,11 @@ html[data-theme="dark"] .hero__bg {
   padding:12px 20px;
   min-width:130px;
   border-radius:16px;
+  /* Relleno BLANCO sólido: la sección tiene fondo azul oscuro y muchos logos
+     son transparentes/oscuros → sin esto se pierden. Tarjeta blanca = logo legible. */
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
 }
 .inst-chip--more{
   background:var(--brand);
