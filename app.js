@@ -4,7 +4,7 @@
  */
 const CONFIG = {
   brand: "EducaProject",
-  whatsappNumber: "51922503398",      // Formato internacional sin + ni espacios
+  whatsappNumber: "51922503398",
   whatsappDisplay: "+51 922 503 398",
   location: "Manuel del Pino 252, Lince",
   facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
@@ -20,6 +20,30 @@ const CONFIG = {
   stat3Label: "Etapas de desarrollo",
 };
 
+/** Configuración por página */
+const PAGE_CONFIG = {
+  trabajos: {
+    stat1Value: "500+",
+    stat1Label: "Trabajos entregados",
+    stat2Value: "10+",
+    stat2Label: "Tipos de trabajo",
+    stat3Value: "15+",
+    stat3Label: "Instituciones cubiertas",
+  },
+  tesis: {
+    stat1Value: "300+",
+    stat1Label: "Proyectos elaborados",
+    stat2Value: "5+",
+    stat2Label: "Formatos de citación",
+    stat3Value: "4",
+    stat3Label: "Etapas de desarrollo",
+  },
+};
+
+function getPage() {
+  return document.body.getAttribute("data-page") || "tesis";
+}
+
 function buildWhatsAppUrl(message) {
   const base = `https://wa.me/${CONFIG.whatsappNumber}`;
   const text = encodeURIComponent(message || "");
@@ -27,6 +51,13 @@ function buildWhatsAppUrl(message) {
 }
 
 function bindConfig() {
+  // Aplicar configuración de página
+  const page = getPage();
+  const pageConf = PAGE_CONFIG[page];
+  if (pageConf) {
+    Object.assign(CONFIG, pageConf);
+  }
+
   document.querySelectorAll("[data-bind]").forEach((el) => {
     const key = el.getAttribute("data-bind");
     if (CONFIG[key] !== undefined) el.textContent = CONFIG[key];
@@ -96,6 +127,13 @@ function setupReveal() {
   );
 
   els.forEach((el) => obs.observe(el));
+
+  // RED DE SEGURIDAD (2026-07-02): si el observador no dispara (iframes,
+  // navegadores raros, scroll programático), NADA puede quedar invisible.
+  // A los 1.5s todo lo aún no revelado se muestra sí o sí.
+  setTimeout(() => {
+    document.querySelectorAll("[data-reveal]:not(.revealed)").forEach((el) => el.classList.add("revealed"));
+  }, 1500);
 }
 
 function setupAccordions() {
@@ -150,25 +188,47 @@ function setupForm() {
   const form = document.getElementById("leadForm");
   if (!form) return;
 
+  const page = getPage();
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
     const name = (data.get("name") || "").toString().trim();
-    const program = (data.get("program") || "").toString().trim();
-    const stage = (data.get("stage") || "").toString().trim();
-    const date = (data.get("date") || "").toString().trim();
-    const message = (data.get("message") || "").toString().trim();
 
-    const lines = [
-      `Hola, soy ${name}.`,
-      program ? `Programa/Carrera: ${program}` : null,
-      stage ? `Etapa: ${stage}` : null,
-      date ? `Fecha tentativa: ${date}` : null,
-      message ? `Situación: ${message}` : null,
-      "",
-      "¿Podemos coordinar el desarrollo de mi investigación? Gracias.",
-    ].filter(Boolean);
+    let lines;
+
+    if (page === "trabajos") {
+      const institution = (data.get("institution") || "").toString().trim();
+      const workType = (data.get("workType") || "").toString().trim();
+      const date = (data.get("date") || "").toString().trim();
+      const message = (data.get("message") || "").toString().trim();
+
+      lines = [
+        `Hola, soy ${name}.`,
+        institution ? `Institución: ${institution}` : null,
+        workType ? `Tipo de trabajo: ${workType}` : null,
+        date ? `Fecha de entrega: ${date}` : null,
+        message ? `Detalle: ${message}` : null,
+        "",
+        "¿Me pueden cotizar este trabajo? Gracias.",
+      ].filter(Boolean);
+    } else {
+      const program = (data.get("program") || "").toString().trim();
+      const stage = (data.get("stage") || "").toString().trim();
+      const date = (data.get("date") || "").toString().trim();
+      const message = (data.get("message") || "").toString().trim();
+
+      lines = [
+        `Hola, soy ${name}.`,
+        program ? `Programa/Carrera: ${program}` : null,
+        stage ? `Etapa: ${stage}` : null,
+        date ? `Fecha tentativa: ${date}` : null,
+        message ? `Situación: ${message}` : null,
+        "",
+        "¿Podemos coordinar el desarrollo de mi investigación? Gracias.",
+      ].filter(Boolean);
+    }
 
     const url = buildWhatsAppUrl(lines.join("\n"));
     window.open(url, "_blank", "noopener");
@@ -338,6 +398,17 @@ function setupGSAP() {
     );
   }
 
+  // Instituciones grid → stagger
+  const instCards = Array.from(document.querySelectorAll(".inst-card"));
+  if (instCards.length) {
+    instCards.forEach((c) => handled.add(c));
+    gsap.fromTo(instCards,
+      { opacity: 0, y: 30, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: "power2.out",
+        scrollTrigger: { trigger: instCards[0].parentElement, start: "top 82%" } }
+    );
+  }
+
   // Resto de [data-reveal]
   document.querySelectorAll("[data-reveal]").forEach((el) => {
     if (handled.has(el)) return;
@@ -377,8 +448,14 @@ function setupTyped() {
   if (typeof Typed === "undefined") return;
   const el = document.getElementById("typedTarget");
   if (!el) return;
+
+  const page = getPage();
+  const strings = page === "trabajos"
+    ? ["informe académico", "ensayo", "monografía", "caso de estudio", "presentación", "Excel y reportes", "dashboard en Power BI", "programación"]
+    : ["tesis", "proyectos de investigación", "trabajos de suficiencia profesional", "artículos científicos", "informes académicos", "tesinas"];
+
   new Typed("#typedTarget", {
-    strings: ["tesis", "proyectos de investigación", "trabajos de grado", "artículos científicos", "informes académicos", "tesinas"],
+    strings: strings,
     typeSpeed: 60,
     backSpeed: 35,
     backDelay: 1600,
@@ -389,17 +466,39 @@ function setupTyped() {
   });
 }
 
+function setupSwiper() {
+  if (typeof Swiper === "undefined") return;
+  if (!document.querySelector(".reviews-swiper")) return;
+  new Swiper(".reviews-swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    coverflowEffect: {
+      rotate: 18,
+      stretch: 0,
+      depth: 120,
+      modifier: 1.2,
+      slideShadows: false,
+    },
+    autoplay: { delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true },
+    pagination: { el: ".reviews-pagination", clickable: true },
+    speed: 700,
+  });
+}
+
 function setupParticles() {
   if (typeof particlesJS === "undefined") return;
   if (!document.getElementById("hero-particles")) return;
   particlesJS("hero-particles", {
     particles: {
       number: { value: 110, density: { enable: true, value_area: 800 } },
-      color: { value: ["#C9A84C", "#4A7BC8", "#ffffff"] },
+      color: { value: ["#3C5EB3", "#4D7EDD", "#A7BDEB"] },
       shape: { type: "circle" },
       opacity: { value: 0.55, random: true, anim: { enable: true, speed: 1.2, opacity_min: 0.15, sync: false } },
       size: { value: 3.2, random: true, anim: { enable: true, speed: 2, size_min: 0.8, sync: false } },
-      line_linked: { enable: true, distance: 150, color: "#4A7BC8", opacity: 0.22, width: 1 },
+      line_linked: { enable: true, distance: 150, color: "#4D7EDD", opacity: 0.18, width: 1 },
       move: { enable: true, speed: 1.8, direction: "none", random: true, straight: false, out_mode: "out", bounce: false },
     },
     interactivity: {
@@ -434,16 +533,38 @@ function setupNavScroll() {
   onScroll();
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  bindConfig();
+  bindWhatsAppLinks();
+  setupMobileMenu();
+  setupScrollProgress();
+  setupScrollSpy();
+  setupNavScroll();
+  setupGSAP();
+  setupAccordions();
+  setupFaqSearch();
+  setupForm();
+  setupCopyWhatsApp();
+  setupToTop();
+  setupYear();
+  setupTyped();
+  setupSwiper();
+  setupParticles();
+  setupTilt();
+  setupPromoToasts();
+  setupTabTitle();
+});
+
 function setupPromoToasts() {
   const messages = [
-    { title: "¿Tesis pendiente?", text: "Te ayudamos a avanzar con claridad. Escríbenos." },
-    { title: "¿Llegas justo?", text: "Coordinamos sesiones urgentes. Cotiza en minutos." },
-    { title: "Alguien acaba de agendar", text: "Tú también puedes. Es gratis y sin compromiso." },
-    { title: "¿Sustentación cerca?", text: "Preparamos tu defensa. Escríbenos por WhatsApp." },
-    { title: "+300 proyectos elaborados", text: "Estudiantes de PUCP, UPC, USMP y más confían en nosotros." },
-    { title: "APA, Vancouver, IEEE...", text: "Manejamos todos los formatos. Consulta sin cargo." },
-    { title: "Diagnóstico gratuito", text: "Envíanos tu avance y te orientamos al toque." },
-    { title: "Metodología, redacción, análisis...", text: "Lo que necesites, lo coordinamos. Escríbenos." },
+    { title: "¿Tienes un trabajo difícil?", text: "Acá te ayudamos. Escríbenos por WhatsApp." },
+    { title: "¿Llegas justo?", text: "Hacemos trabajos urgentes. Cotiza en 1 hora." },
+    { title: "Alguien acaba de cotizar", text: "Tú también puedes. Es gratis y sin compromiso." },
+    { title: "¿Tarea para mañana?", text: "Tranquilo, lo resolvemos. Mándanos la consigna." },
+    { title: "+500 trabajos entregados", text: "Estudiantes de PUCP, UPC, USMP y más confían en nosotros." },
+    { title: "¿Parcial o final?", text: "Te ayudamos a prepararlo. Escríbenos por WhatsApp." },
+    { title: "Cotización gratuita", text: "Mándanos los requisitos y te respondemos al toque." },
+    { title: "Excel, Power BI, SQL...", text: "Lo que necesites, lo hacemos. Consulta sin cargo." },
   ];
 
   const toast = document.getElementById("promoToast");
@@ -484,14 +605,14 @@ function setupPromoToasts() {
 
 function setupTabTitle() {
   const titles = [
-    "EducaProject | Elaboramos tu tesis con calidad",
-    "¿Tesis o investigación? Te ayudamos 📄",
-    "Metodología, redacción y sustentación",
+    "EducaProject | Hacemos tus tareas y trabajos",
+    "¿Tienes una tarea difícil? 📚",
+    "No dudes en escribirnos 💬",
     "Cotiza gratis por WhatsApp",
-    "+300 proyectos elaborados ✓",
-    "APA, Vancouver, IEEE y más",
-    "¡No lo dejes para último momento!",
-    "Respuesta rápida por WhatsApp ⚡",
+    "Entrega rápida garantizada ⚡",
+    "¡Te ayudamos hoy mismo!",
+    "Trabajos, informes, tareas y más",
+    "Respuesta inmediata por WhatsApp",
   ];
 
   const awayTitle = "¡Vuelve! Te esperamos 👋 — EducaProject";
@@ -516,24 +637,3 @@ function setupTabTitle() {
     }
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  bindConfig();
-  bindWhatsAppLinks();
-  setupMobileMenu();
-  setupScrollProgress();
-  setupScrollSpy();
-  setupNavScroll();
-  setupGSAP();
-  setupAccordions();
-  setupFaqSearch();
-  setupForm();
-  setupCopyWhatsApp();
-  setupToTop();
-  setupYear();
-  setupTyped();
-  setupParticles();
-  setupTilt();
-  setupPromoToasts();
-  setupTabTitle();
-});
