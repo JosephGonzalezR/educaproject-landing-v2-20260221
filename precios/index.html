@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light" />
 
   <title>Planes & Precios de Tesis | EducaProject</title>
-  <meta name="description" content="Conoce los planes y precios para la elaboración de tu tesis: Estándar, Preferente y Élite. Adaptados a institutos, universidades, maestría y doctorado. Precios referenciales; se confirman con un asesor." />
+  <meta name="description" content="Conoce los planes y precios para la elaboración de tu tesis: Estándar, Preferente y Élite. Adaptados a institutos técnicos, institutos profesionales, universidades, maestría y doctorado. Precios referenciales; se confirman con un asesor." />
   <meta name="author" content="EducaProject" />
   <meta name="theme-color" content="#3C5EB3" />
 
@@ -661,7 +661,8 @@
       <!-- PASO 1: elegir nivel -->
       <p class="tabs-hint" id="tabsHint">Elige tu nivel para ver los precios y planes 👇</p>
       <div class="tabs" id="tabs">
-        <button class="tab" data-tab="ip">Instituto</button>
+        <button class="tab" data-tab="cft">Instituto Técnico</button>
+        <button class="tab" data-tab="ip">Instituto Profesional</button>
         <button class="tab" data-tab="uni">Universidad (Pregrado)</button>
         <button class="tab" data-tab="master">Maestría</button>
         <button class="tab" data-tab="doc">Doctorado</button>
@@ -709,7 +710,7 @@
       <!-- NOTE -->
       <div class="note-section">
         <h3>¿Por qué varían los precios entre instituciones?</h3>
-        <p>Los institutos exigen proyectos más acotados y aplicados. Las universidades tienen estándares de investigación más rigurosos, normativas internas específicas y jurados más exigentes. A nivel de posgrado (maestría y doctorado), se requiere contribución original al conocimiento, revisión bibliográfica exhaustiva y coherencia metodológica avanzada.</p>
+        <p>Los institutos técnicos exigen proyectos más acotados y aplicados. Los institutos profesionales requieren mayor profundidad metodológica. Las universidades tienen estándares de investigación más rigurosos, normativas internas específicas y jurados más exigentes. A nivel de posgrado (maestría y doctorado), se requiere contribución original al conocimiento, revisión bibliográfica exhaustiva y coherencia metodológica avanzada.</p>
       </div>
 
       <p class="footer-note">Precios referenciales; se confirman con un asesor · Sujetos a cotización personalizada según requerimientos específicos</p>
@@ -778,26 +779,29 @@
     const WA_SVG = '<svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
 
     const tabLabels = {
-      ip: 'Instituto',
+      cft: 'Instituto Técnico',
+      ip: 'Instituto Profesional',
       uni: 'Universidad (Pregrado)',
       master: 'Maestría',
       doc: 'Doctorado'
     };
 
-    // PRECIOS PE (orden CEO 2026-07-03): escalados desde el molde CL.
+    // PRECIOS PE (orden CEO, actualizado 2026-07-03): escalados desde el molde CL con los MISMOS 5 niveles.
     // Base CL (matriz /precios/ Chile): cft 150000/250000/375000 · ip 250000/420000/625000 ·
     // uni 350000/585000/875000 · master 550000/920000/1375000 · doc 950000/1615000/2375000.
     // Factor tesis = 1000 / 150000 (el "desde" CL, cft Estándar, debe ser S/ 1,000 en Perú).
     // Redondeo SIEMPRE hacia arriba a múltiplos de S/ 50. Mapeo de niveles PE:
-    // Instituto <- cft (nivel más barato CL, conserva el "desde"), uni <- uni, master <- master, doc <- doc.
+    // Instituto Técnico <- CFT · Instituto Profesional <- Instituto Profesional · uni/master/doc igual.
+    // Así se conservan los mismos crecimientos porcentuales entre planes y entre niveles que en Chile.
     const bases = {
-      ip: { base: 1000, p: 1700, e: 2500 },
+      cft: { base: 1000, p: 1700, e: 2500 },
+      ip: { base: 1700, p: 2800, e: 4200 },
       uni: { base: 2350, p: 3900, e: 5850 },
       master: { base: 3700, p: 6150, e: 9200 },
       doc: { base: 6350, p: 10800, e: 15850 }
     };
 
-    let currentTab = 'ip';
+    let currentTab = 'cft';
 
     function formatPrice(n) { return 'S/ ' + n.toLocaleString('es-PE'); }
 
