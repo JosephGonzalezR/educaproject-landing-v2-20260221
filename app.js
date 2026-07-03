@@ -6,7 +6,7 @@ const CONFIG = {
   brand: "EducaProject",
   whatsappNumber: "51922503398",
   whatsappDisplay: "+51 922 503 398",
-  location: "Manuel del Pino 252, Lince",
+  location: "Lima, Perú",
   facebookUrl: "https://www.facebook.com/profile.php?id=61550076753079",
   tiktokUrl: "https://www.tiktok.com/@educaproject_",
   instagramUrl: "https://www.instagram.com/educaproject_peru/",
@@ -412,12 +412,26 @@ function setupGSAP() {
   // Resto de [data-reveal]
   document.querySelectorAll("[data-reveal]").forEach((el) => {
     if (handled.has(el)) return;
+    handled.add(el);
     gsap.fromTo(el,
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, duration: 0.8, ease: "power2.out",
         scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" } }
     );
   });
+
+  // RED DE SEGURIDAD GSAP (2026-07-02): si ScrollTrigger no dispara (iframes,
+  // visores embebidos), los elementos animados con fromTo(opacity:0) quedarían
+  // invisibles PARA SIEMPRE. A los 1.8s, todo lo que siga oculto se muestra.
+  setTimeout(() => {
+    handled.forEach((el) => {
+      try {
+        if (parseFloat(getComputedStyle(el).opacity) < 0.05) {
+          gsap.set(el, { opacity: 1, y: 0, x: 0, scale: 1, clearProps: "transform" });
+        }
+      } catch (e) {}
+    });
+  }, 1800);
 
   // CountUp animado en stats
   const statVals = document.querySelectorAll(".stat__val[data-countup]");

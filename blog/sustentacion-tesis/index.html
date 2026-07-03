@@ -47,15 +47,15 @@
   <!-- Header -->
   <header class="nav" id="top">
     <div class="container nav__inner">
-      <a class="brand" href="/tesis/" aria-label="Ir al inicio">
-        <img src="/assets/logo-mark.webp" width="40" height="40" alt="Logo de EducaProject" decoding="async" />
+      <a class="brand" href="/" aria-label="Ir al inicio">
+        <img src="/assets/logo-mark.webp" width="40" height="40" alt="Logo de EducaProject" decoding="async" style="border-radius:10px" />
         <span class="brand__text">
           <strong>EducaProject</strong>
           <small>Servicios académicos</small>
         </span>
       </a>
       <nav class="nav__links" aria-label="Navegación principal">
-        <a href="/tesis/#servicios">Servicios</a>
+        <a href="/#servicios-trabajos">Servicios</a>
         <a href="/procedimiento/">Proceso</a>
         <a href="/precios-trabajos/">Precios Trabajos</a>
         <a href="/precios/">Precios Tesis</a>
@@ -64,24 +64,11 @@
         <a href="/pago/">Pago</a>
         <a href="/blog/">Blog</a>
         <a href="/nosotros/">Nosotros</a>
-        <a href="/tesis/#contacto" class="nav__cta">Agendar</a>
       </nav>
       <div class="nav__actions">
-        <a class="btn btn--ghost btn--sm hide-sm" data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
-          <svg class="i" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-          <span class="btn__hint" data-bind="whatsappDisplay">+51 922 503 398</span>
+        <a class="btn btn--ghost btn--sm hide-sm" href="/blog/">
+          &larr; Volver al Blog
         </a>
-        <button class="nav__burger" type="button" id="menuBtn" aria-label="Abrir menú" aria-controls="mobileMenu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" hidden>
-      <div class="mobile-menu__inner container">
-        <a href="/tesis/">Inicio</a>
-        <a href="/blog/" class="active">Blog</a>
-        <a href="/nosotros/">Nosotros</a>
-        <a href="/tesis/#contacto" class="btn btn--primary btn--block">Agendar por WhatsApp</a>
       </div>
     </div>
   </header>
@@ -96,7 +83,7 @@
       <div class="article-hero__overlay"></div>
       <div class="article-hero__content container">
         <nav class="article-breadcrumb" aria-label="Breadcrumb">
-          <a href="/tesis/">Inicio</a>
+          <a href="/">Inicio</a>
           <span>/</span>
           <a href="/blog/">Blog</a>
           <span>/</span>
@@ -449,7 +436,7 @@
             </div>
             <div class="blog-card__body">
               <span class="blog-card__badge" style="--badge-color: #E34C26">Redacción</span>
-              <h3><a href="blog-resultados-investigación.html">Cómo escribir los resultados de tu investigación</a></h3>
+              <h3><a href="/blog/resultados-investigacion/">Cómo escribir los resultados de tu investigación</a></h3>
               <p class="muted">Guía para redactar y presentar el capítulo de resultados de forma correcta.</p>
               <time class="blog-card__date muted">Febrero 2026</time>
             </div>
@@ -476,65 +463,32 @@
     </section>
   </main>
 
-  <!-- Footer wave -->
-  <div class="footer-wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,30 C360,90 720,0 1080,50 C1260,75 1380,20 1440,30 L1440,90 L0,90 Z" fill="#1A3A6B"/>
-    </svg>
-  </div>
-
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <img src="/assets/logo-mark.webp" width="56" height="56" alt="Logo de EducaProject" loading="lazy" decoding="async" />
+        <img src="/assets/logo-mark.webp" width="56" height="56" alt="Logo de EducaProject" loading="lazy" decoding="async" style="border-radius:12px" />
         <div>
-          <strong data-bind="brand">EducaProject</strong>
+          <strong>EducaProject</strong>
           <p class="muted">Servicios académicos</p>
         </div>
       </div>
       <div class="footer__cols">
         <div>
           <h4>Secciones</h4>
-          <a href="/tesis/">Inicio</a>
-          <a href="/nosotros/">Nosotros</a>
+          <a href="/">Inicio</a>
+          <a href="/tesis/">Tesis</a>
           <a href="/blog/">Blog</a>
-          <a href="/tesis/#contacto">Contacto</a>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="/privacy/">Privacidad</a>
-          <a href="/terms/">Términos</a>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <a data-wa-message="Hola, necesito ayuda con mi tesis." href="#" rel="noopener">
-            <svg class="i i--sm" aria-hidden="true"><use href="#i-whatsapp"></use></svg> WhatsApp
-          </a>
-          <a data-href="facebookUrl" href="#" target="_blank" rel="noopener">
-            <svg class="i i--sm" aria-hidden="true"><use href="#i-facebook"></use></svg> Facebook
-          </a>
-          <a data-href="tiktokUrl" href="#" target="_blank" rel="noopener">
-            <svg class="i i--sm" aria-hidden="true"><use href="#i-tiktok"></use></svg> TikTok
-          </a>
-          <a data-href="instagramUrl" href="#" target="_blank" rel="noopener">
-            <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram
-          </a>
-          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Manuel del Pino 252, Lince</span></span>
+          <a href="/nosotros/">Nosotros</a>
         </div>
       </div>
     </div>
     <div class="container footer__bottom">
-      <span class="muted">&copy; <span id="year"></span> <span data-bind="brand">EducaProject</span>. Todos los derechos reservados.</span>
+      <span class="muted">&copy; 2026 EducaProject. Todos los derechos reservados.</span>
     </div>
   </footer>
 
-  <button class="to-top" id="toTop" type="button" aria-label="Volver arriba">&#8593;</button>
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <script src="/app.js"></script>
 </body>
 </html>

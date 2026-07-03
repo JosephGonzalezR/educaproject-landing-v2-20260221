@@ -2669,7 +2669,7 @@ html[data-theme="dark"] .hero__bg {
 
 /* ── Contraste Perú (2026-07-02): texto claro en secciones oscuras con foto ── */
 #opiniones-trabajos .section__head h2,
-#opiniones .section__head h2 { color: #FFFFFF; -webkit-text-fill-color: #FFFFFF; }
+#opiniones .section__head h2 { color: #FFFFFF; -webkit-text-fill-color: #FFFFFF; background: none; }
 #opiniones-trabajos .section__head .muted,
 #opiniones .section__head .muted { color: rgba(255,255,255,.85); }
 #opiniones-trabajos .section__head h2::after,
