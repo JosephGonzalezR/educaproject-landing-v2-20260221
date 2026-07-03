@@ -45,9 +45,12 @@ Se replicó la matriz de Chile convertida a soles (aprox. CLP→PEN y redondeado
   en FAQ, procedimiento y nosotros. Confirmar la redacción/escala y si se quiere garantizar.
 
 ## 5. Referencias
-- /referencias/ quedó con estado "Pronto publicaremos aquí referencias reales" (igual que la
-  web PE anterior): NO hay imágenes de referencias de Perú (Chile tiene 8 en assets/referencias).
-  Cuando el CEO entregue las imágenes editadas, se agrega la galería con el mismo patrón de Chile.
+- /referencias/ tiene la MISMA página que Chile (grilla 8 + lightbox + CTA) pero con 8 tarjetas
+  promocionales de marca como PLACEHOLDER: NO existen capturas reales de WhatsApp de Perú
+  (Chile usa capturas reales en assets/referencias; la carpeta E:\_EVIDENCIAS_WEB\PE está vacía).
+  Cuando el CEO entregue capturas reales editadas de Perú, reemplazar assets/referencias/ref-1..8.webp
+  (mismo patrón que Chile: 1 tarjeta intro de marca + 7 capturas reales anonimizadas).
+  El texto del hero ya quedó idéntico al molde (2026-07-03).
 
 ## 6. Blog
 - Se migraron los 5 posts de TESIS existentes de Perú a carpetas (/blog/<slug>/) con el diseño
