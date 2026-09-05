@@ -39,6 +39,13 @@
       "@type": "ProfessionalService",
       "@id": "https://educaproject.ags-ed.com/#organizacion",
       "name": "EducaProject",
+      "legalName": "EducaProject S.A.C.",
+      "taxID": "20611803436",
+      "address": { "@type": "PostalAddress", "streetAddress": "Manuel del Pino 252", "addressLocality": "Lince", "addressRegion": "Lima", "addressCountry": "PE" },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "19:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "10:00", "closes": "14:00" }
+      ],
       "url": "https://educaproject.ags-ed.com/",
       "logo": "https://educaproject.ags-ed.com/assets/social-banner.webp",
       "image": "https://educaproject.ags-ed.com/assets/social-banner.webp",
@@ -320,6 +327,34 @@
       </div>
     </section>
 
+    <!-- DATOS DE LA EMPRESA (5-sep-2026) -->
+    <section class="section section--alt" id="empresa">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-reveal>Datos de la empresa</h2>
+          <p class="muted" data-reveal>Para que sepas con quién trabajas antes de dar el primer paso.</p>
+        </div>
+        <div class="cards" data-reveal>
+          <article class="card">
+            <h3>Razón social y RUC</h3>
+            <p class="muted"><strong>EducaProject S.A.C.</strong><br />RUC <strong>20611803436</strong></p>
+          </article>
+          <article class="card">
+            <h3>Oficina</h3>
+            <p class="muted">Manuel del Pino 252, Lince, Lima.<br />Atención presencial con cita previa (mínimo 1 día de anticipación).<br />Lun a Vie 10:00 a 19:00 · Sáb 10:00 a 14:00.</p>
+          </article>
+          <article class="card">
+            <h3>Contrato y pagos</h3>
+            <p class="muted">Firmamos un contrato con el cronograma de entregas y de pagos. Vista previa de cada avance antes de pagar el saldo. Todos los pagos van a cuentas a nombre de la empresa.</p>
+          </article>
+          <article class="card">
+            <h3>Atención en todo el Perú</h3>
+            <p class="muted">Por WhatsApp (+51 922 503 398) y videollamada, de lunes a sábado. Revisa nuestras <a href="/referencias/">referencias</a> y <a href="/procedimiento/">cómo trabajamos</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- CARRERAS -->
     <section class="section">
       <div class="container">
@@ -471,7 +506,9 @@
           <a data-href="instagramUrl" href="#" target="_blank" rel="noopener">
             <svg class="i i--sm" aria-hidden="true"><use href="#i-instagram"></use></svg> Instagram
           </a>
-          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Lima, Perú</span></span>
+          <span class="muted"><svg class="i i--sm" aria-hidden="true"><use href="#i-pin"></use></svg> <span data-bind="location">Manuel del Pino 252, Lince, Lima</span></span>
+          <span class="muted">Atención presencial con cita previa · <span data-bind="schedule">Lun a Vie 10:00 a 19:00 · Sáb 10:00 a 14:00 (con cita previa)</span></span>
+          <span class="muted"><span data-bind="legalName">EducaProject S.A.C.</span> · RUC <span data-bind="ruc">20611803436</span></span>
         </div>
       </div>
     </div>
