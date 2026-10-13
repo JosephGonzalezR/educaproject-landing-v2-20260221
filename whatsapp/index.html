@@ -73,6 +73,18 @@
     (function () {
       var TEL = "51922503398";
       var MSG = "Buen día, quiero información sobre asesoría de tesis.";
+      // 13-oct-2026: abierto dentro de una red (TikTok, Instagram o Facebook), el saludo dice de cual viene. La red
+      // queda en la direccion (?o=) para que no se pierda si la persona elige "Abrir en el navegador".
+      var uaRed = navigator.userAgent || "";
+      var REDES = { tiktok: "TikTok", instagram: "Instagram", facebook: "Facebook" };
+      var RED = /musical_ly|trill_|Bytedance|TikTok/i.test(uaRed) ? "TikTok" : /Instagram/i.test(uaRed) ? "Instagram"
+              : /FBAN|FBAV|FB_IAB/i.test(uaRed) ? "Facebook" : "";
+      var porUrl = REDES[(((location.search || "").match(/[?&]o=([a-z]+)/i) || [])[1] || "").toLowerCase()] || "";
+      if (RED && !porUrl) {
+        try { history.replaceState(history.state, "", location.pathname + "?o=" + RED.toLowerCase()); } catch (e) {}
+      }
+      RED = porUrl || RED;
+      if (RED) MSG = "Hola, vengo de %s. Quiero hacer una consulta.".replace("%s", RED);
       var Q = "phone=" + TEL + "&text=" + encodeURIComponent(MSG);
       var WEB = "https://wa.me/" + TEL + "?text=" + encodeURIComponent(MSG);
       var ESQUEMA = "whatsapp://send?" + Q;
@@ -85,6 +97,8 @@
       var interno = /musical_ly|trill_|Bytedance|TikTok|Instagram|FBAN|FBAV|FB_IAB|Line\//i.test(ua);
 
       var abrir = document.getElementById("abrir");
+      abrir.href = WEB;
+      document.getElementById("web").href = WEB;
 
       // Dentro de TikTok (y de Instagram o Facebook) en el celular: la app se abre con su propio esquema,
       // porque wa.me se queda en la web de WhatsApp. Fuera de esos navegadores, wa.me funciona y se deja tal cual.
